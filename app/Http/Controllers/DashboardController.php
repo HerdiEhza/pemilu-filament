@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataPartai;
 use App\Models\PasanganCalon;
+use App\Models\PerolehanSuara;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,7 +16,9 @@ class DashboardController extends Controller
     {
         $paslon = PasanganCalon::all();
         $partais = DataPartai::all();
-        return view('dashboard', compact('paslon', 'partais'));
+
+        $perolehanSuara = PerolehanSuara::all();
+        return view('dashboard', compact('paslon', 'partais', 'perolehanSuara'));
     }
 
     /**

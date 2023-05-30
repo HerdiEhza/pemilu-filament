@@ -21,12 +21,13 @@
                                 @if ($p->id == $np)
                                     {{ $p->nama_partai }}
                                 @endif
-                            @endforeach 
+                            @endforeach
                         @endforeach
+                        <h1>perolehan suara : </h1>
                         <br>
                         <br>
                     @empty
-                        
+
                     @endforelse
 
                     {{-- {{ dd($np) }} --}}
