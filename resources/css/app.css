@@ -4,5 +4,28 @@
 
 .bg-login {
     --tw-bg-opacity: 1;
-    background-color: rgb(217 119 6/var(--tw-bg-opacity));
+    background-color: rgb(217 119 6 / var(--tw-bg-opacity));
+}
+
+.bg-card {
+    background-color: #171717;
+}
+.bg-sidebar-card-top {
+    background-color: #353535;
+}
+.text-premium-yellow {
+    color: #f7b91c;
+}
+.icon-background {
+    background: #2d2d2d;
+}
+.card-stack-border {
+    border-bottom: 2px solid #696969;
+}
+.bg-details {
+    background-color: #1e1e1e;
+}
+.add-component-head {
+    background-color: #181818;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
 }
