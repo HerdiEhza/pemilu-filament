@@ -90,7 +90,13 @@
                             </div>
                         {{-- </div> --}}
                     @endforelse
-                {{-- {{dd($data)}} --}}
+
+                    {{-- @foreach ($bbb as $cc)
+                        {{ $cc }}
+                    @endforeach --}}
+                    {{-- {{ $bbb }} --}}
+                    {{-- {{dd($bbb)}} --}}
+                    {{dd($grouped)}}
             </div>
         </div>
     </div>
