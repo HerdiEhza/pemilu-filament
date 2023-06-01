@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('dashboard');
     Route::get('/input-suara', \App\Http\Livewire\InputDataSuara::class)->name('input-suara');
+    Route::get('/test', \App\Http\Livewire\TestData::class)->name('test');
 
     // Route::get('data-tps/eja', \App\Http\Livewire\InputDataSuara\Input::class)->name('data-tps.eja');
 

@@ -17,7 +17,8 @@ class PerolehanSuara extends Model
     ];
 
     protected $casts = [
-        'result' => 'array',
+        // 'result' => 'array',
+        'result' => PostStatus::class
     ];
 
     public function user()

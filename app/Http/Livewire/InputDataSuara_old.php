@@ -2,30 +2,23 @@
 
 namespace App\Http\Livewire;
 
-use App\Data\PaslonData;
-use App\Data\PerolehanSuaraData;
 use App\Models\DataPartai;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 use App\Models\PerolehanSuara;
-use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
-class InputDataSuara extends Component
+class InputDataSuara_old extends Component
 {
     public $currentStep = 1;
     public $user_id;
-    public $paslon_id;
-    public $nama_paslon;
     public $kategori_pemilu_id;
-    public $perolehan_suara;
+    public $result = [];
     public $status = 1;
     public $successMsg = '';
-
-    public PerolehanSuaraData $dataSuara;
 
     public function firstStepSubmit()
     {
@@ -64,37 +57,20 @@ class InputDataSuara extends Component
     {
         // $userId = Auth::id();
 
-        $paslon = PasanganCalon::create([
-            'paslon_id' => $this->paslon_id,
-            'nama_paslon' => $this->nama_paslon,
-            'kategori_pemilu' => $this->kategori_pemilu_id,
+        PerolehanSuara::create([
+            'user_id' => auth()->id() ?? null,
+            'kategori_pemilu_id' => $this->kategori_pemilu_id,
+            'result' => $this->result,
+            // 'result' => json_encode($this->result),
+            // 'result' => array(
+            //     'paslon_id' => $this->paslon_id,
+            //     'perolehan_suara' => $this->perolehan_suara,
+            // ),
+            // 'result' => array(
+            //     'paslon_id' => $this->result['paslon_id'],
+            //     'perolehan_suara' => $this->result['perolehan_suara'],
+            // ),
         ]);
-        
-        $paslon->result()->create([        
-            [
-                'user_id' => auth()->id() ?? null,
-                'tps_id' => auth()->user()->tps_id ?? null,
-                'perolehan_suara' => $this->perolehan_suara,
-                'created_at' => Carbon::now(),
-            ]
-        ]);
-        
-        PaslonData::from($paslon);
-
-        // PerolehanSuara::create([
-        //     'user_id' => auth()->id() ?? null,
-        //     'kategori_pemilu_id' => $this->kategori_pemilu_id,
-        //     'result' => $this->result,
-        //     // 'result' => json_encode($this->result),
-        //     // 'result' => array(
-        //     //     'paslon_id' => $this->paslon_id,
-        //     //     'perolehan_suara' => $this->perolehan_suara,
-        //     // ),
-        //     // 'result' => array(
-        //     //     'paslon_id' => $this->result['paslon_id'],
-        //     //     'perolehan_suara' => $this->result['perolehan_suara'],
-        //     // ),
-        // ]);
 
 
         // foreach($this->result as $simpanData->id => $testResult)
@@ -124,7 +100,7 @@ class InputDataSuara extends Component
     {
         $this->user_id = '';
         $this->kategori_pemilu_id = '';
-        // $this->result = '';
+        $this->result = '';
     }
 
     // protected function rules(): array

@@ -79,8 +79,8 @@
                             @endforeach --}}
                             <div class="inline-flex items-center mt-2">
                                 <input wire:model="result.{{ $pasangan->id }}" type="hidden" name="paslon_id" id="paslon_id">
-                                <input key="{{ $pasangan->id }}" wire:model="paslon_id" type="number" name="id_paslon" id="id_paslon" class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-                                <input key="{{ $pasangan->id }}" wire:model="perolehan_suara" type="number" name="perolehan_suara" id="perolehan_suara" class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                                <input wire:model="result.{{ $pasangan->id }}.id_paslon" type="number" name="id_paslon" id="id_paslon" class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                                <input wire:model="result.{{ $pasangan->id }}.perolehan_suara" type="number" name="perolehan_suara" id="perolehan_suara" class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                     </div>
