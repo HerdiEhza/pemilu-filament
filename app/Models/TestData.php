@@ -11,18 +11,25 @@ class TestData extends Model
 {
     use HasFactory;
 
+    public $table = 'perolehan_suaras';
+
+    protected $casts = [
+        'result' => 'array',
+        // 'result' => DataTestData::class,
+        // 'result' => DataCollection::class.':'.DataTestData::class,
+    ];
+
     protected $fillable = [
         'user_id',
         'tps_id',
         'kategori_pemilu_id',
-        'paslon_id',
-        'nama_paslon',
-        'kategori_pemilu',
+        // 'paslon_id',
+        // 'kategori_pemilu',
         'result',
     ];
 
-    protected $casts = [
-        // 'result' => DataTestData::class,
-        'result' => DataCollection::class.':'.DataTestData::class,
-    ];
+    public function kategoriPemilu()
+    {
+        return $this->belongsTo(KategoriPemilu::class);
+    }
 }

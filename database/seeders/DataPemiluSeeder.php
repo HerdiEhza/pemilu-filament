@@ -175,7 +175,7 @@ class DataPemiluSeeder extends Seeder
         {
             \App\Models\DataPartai::create($data);
         }
-        
+
         $kategoriPemilu = [
             [
                 'id' => 1,
@@ -386,10 +386,58 @@ class DataPemiluSeeder extends Seeder
                 'nama_kategori_pemilu' => 'Pemilihan umum Wali Kota Singkawang 2024',
             ],
         ];
-        
+
         foreach ($kategoriPemilu as $kaPem)
         {
             \App\Models\KategoriPemilu::create($kaPem);
+        }
+
+        $dataTps = [
+            [
+                'id' => 1,
+                'nama_tps' => 'TPS 01',
+                'provinsi_id' => '1',
+                'kabupaten_kota_id' => '2',
+                'kecamatan_id' => '3',
+                'kelurahan_desa_id' => '4',
+            ],
+        ];
+
+        foreach ($dataTps as $dt)
+        {
+            \App\Models\DataTps::create($dt);
+        }
+
+        $pasanganCalon = [
+            [
+                'id' => 1,
+                'nama_pasangan_calon' => 'Jokowi',
+                'nama_partai_id' => '1',
+                'kategori_pemilu_id' => '1',
+            ],
+            [
+                'id' => 2,
+                'nama_pasangan_calon' => 'Prabowo',
+                'nama_partai_id' => '1',
+                'kategori_pemilu_id' => '1',
+            ],
+            [
+                'id' => 3,
+                'nama_pasangan_calon' => 'Ganjar',
+                'nama_partai_id' => '1',
+                'kategori_pemilu_id' => '1',
+            ],
+            [
+                'id' => 4,
+                'nama_pasangan_calon' => 'Anis',
+                'nama_partai_id' => '1',
+                'kategori_pemilu_id' => '1',
+            ],
+        ];
+
+        foreach ($pasanganCalon as $paslon)
+        {
+            \App\Models\PasanganCalon::create($paslon);
         }
     }
 }

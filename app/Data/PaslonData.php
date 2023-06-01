@@ -22,11 +22,11 @@ class PaslonData extends Data implements Wireable
     ) {
     }
 
-    public static function fromModel(PasanganCalon $paslon)
-    {
-        return new self(
-            $paslon->name,
-            Lazy::create(fn() => PerolehanSuaraData::collection($paslon->result))
-        );
-    }
+    // public static function fromModel(PasanganCalon $paslon)
+    // {
+    //     return new self(
+    //         $paslon->name,
+    //         Lazy::create(fn() => PerolehanSuaraData::collection($paslon->result))
+    //     );
+    // }
 }
