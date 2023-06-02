@@ -11,10 +11,10 @@ class TestData extends Model
 {
     use HasFactory;
 
-    public $table = 'perolehan_suaras';
+    public $table = 'test_data';
 
     protected $casts = [
-        'result' => 'array',
+        'result' => 'json',
         // 'result' => DataTestData::class,
         // 'result' => DataCollection::class.':'.DataTestData::class,
     ];

@@ -62,4 +62,9 @@ class User extends Authenticatable implements FilamentUser
         // return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
         return str_ends_with($this->email, '@dku.id');
     }
+
+    public function tps() : BelongsTo
+    {
+        return $this->BelongsTo(DataTps::class);
+    }
 }

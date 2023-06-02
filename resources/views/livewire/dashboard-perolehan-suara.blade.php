@@ -53,7 +53,7 @@
                                     <img src="https://assets.codepen.io/3685267/res-react-dash-bull.svg" alt="" class="w-8 h-8">
                                     <div class="text-green-500 font-bold text-lg">
                                         @foreach ($perolehanSuara as $test)
-                                            <div class="flex">
+                                            <div class="flex text-whhite">
                                                 @foreach ($test->result as $data)
                                                     @if ($paslonn->id == $data->id_paslon)
                                                         {{-- return $data->perolehan_suara->count() --}}
@@ -65,6 +65,8 @@
                                                     @endif
                                                 @endforeach
                                                 {{-- {{ array_sum($data->perolehan_suara) }} --}}
+
+                                                
                                             </div>
                                         @endforeach
                                     </div>
@@ -90,13 +92,22 @@
                             </div>
                         {{-- </div> --}}
                     @endforelse
-
+                    
+                    
+                    @foreach ($eja as $mpus)
+                    {{-- @if ($paslonn->id == array_keys($mpus)) --}}
+                        {{-- {{ $mpus }} --}}
+                        @foreach ($mpus as $bbr)
+                            {{-- {{ $bbr }} --}}
+                        @endforeach
+                    {{-- @endif --}}
+                @endforeach
                     {{-- @foreach ($bbb as $cc)
                         {{ $cc }}
                     @endforeach --}}
-                    {{-- {{ $bbb }} --}}
-                    {{-- {{dd($bbb)}} --}}
-                    {{dd($grouped)}}
+                    {{ dd($newData) }}
+                    {{-- {{dd($bbr)}} --}}
+                    {{-- {{dd($mpus)}} --}}
             </div>
         </div>
     </div>

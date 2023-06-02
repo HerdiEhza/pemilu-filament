@@ -396,10 +396,10 @@ class DataPemiluSeeder extends Seeder
             [
                 'id' => 1,
                 'nama_tps' => 'TPS 01',
-                'provinsi_id' => '1',
-                'kabupaten_kota_id' => '2',
-                'kecamatan_id' => '3',
-                'kelurahan_desa_id' => '4',
+                'provinsi_id' => 1,
+                'kabupaten_kota_id' => 2,
+                'kecamatan_id' => 3,
+                'kelurahan_desa_id' => 4,
             ],
         ];
 
@@ -412,26 +412,26 @@ class DataPemiluSeeder extends Seeder
             [
                 'id' => 1,
                 'nama_pasangan_calon' => 'Jokowi',
-                'nama_partai_id' => '1',
-                'kategori_pemilu_id' => '1',
+                'nama_partai_id' => 1,
+                'kategori_pemilu_id' => 1,
             ],
             [
                 'id' => 2,
                 'nama_pasangan_calon' => 'Prabowo',
-                'nama_partai_id' => '1',
-                'kategori_pemilu_id' => '1',
+                'nama_partai_id' => 1,
+                'kategori_pemilu_id' => 1,
             ],
             [
                 'id' => 3,
                 'nama_pasangan_calon' => 'Ganjar',
-                'nama_partai_id' => '1',
-                'kategori_pemilu_id' => '1',
+                'nama_partai_id' => 1,
+                'kategori_pemilu_id' => 1,
             ],
             [
                 'id' => 4,
                 'nama_pasangan_calon' => 'Anis',
-                'nama_partai_id' => '1',
-                'kategori_pemilu_id' => '1',
+                'nama_partai_id' => 1,
+                'kategori_pemilu_id' => 1,
             ],
         ];
 

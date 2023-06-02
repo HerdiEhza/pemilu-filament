@@ -19,12 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Herdi',
-            'email' => 'marketing@dku.id',
-            'password' => Hash::make('Mekikau19')
-        ]);
-
         $this->call([
             // ProvincesSeeder::class,
             // CitiesSeeder::class,
@@ -32,6 +26,13 @@ class DatabaseSeeder extends Seeder
             // VillagesSeeder::class,
             WilayahSeeder::class,
             DataPemiluSeeder::class,
+        ]);
+        
+        \App\Models\User::factory()->create([
+            'name' => 'Herdi',
+            'email' => 'marketing@dku.id',
+            'password' => Hash::make('Mekikau19'),
+            'tps_id' => 1,
         ]);
     }
 }

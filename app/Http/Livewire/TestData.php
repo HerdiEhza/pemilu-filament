@@ -8,15 +8,25 @@ use App\Models\PasanganCalon;
 use App\Models\TestData as ModelsTestData;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class TestData extends Component
 {
     // public TestData $data;
     // public $manual_kategori_pemilu_id;
     public $user_id;
-    public $tps_id = 1;
+    public $tps_id;
     public $kategori_pemilu_id;
     public $result = [];
+    public $data;
+
+    public function mount()
+    {
+        $this->user_id = Auth::id();
+        $this->tps_id = Auth::user()->tps_id;
+
+        
+    }
 
     // protected $rules = [
     //     'user_id' => 'required',
@@ -29,13 +39,21 @@ class TestData extends Component
 
     // public function hydrate()
     // {
+    //     // foreach ($this->result as $data) {
+    //     //     array_push($this->result, [
+    //     //         "paslon_id" => $data['paslon_id'],
+    //     //         "nama_paslon" => $data['nama_paslon'],
+    //     //         "perolehan_suara" => $data['nama_paslon']
+    //     //     ]);
+    //     // };
+
     //     foreach ($this->result as $data) {
-    //         array_push($this->result, [
-    //             "paslon_id" => $data['paslon_id'],
-    //             "nama_paslon" => $data['nama_paslon'],
-    //             "perolehan_suara" => $data['nama_paslon']
+    //         $this->data = json_encode([
+    //             'paslon_id' => $data->paslon_id,
+    //             'nama_paslon' => $data->nama_paslon,
+    //             'perolehan_suara' => $data->perolehan_suara,
     //         ]);
-    //     };
+    //     }
     // }
 
     public function submitForm()
@@ -47,11 +65,18 @@ class TestData extends Component
         //     'kategori_pemilu' => $this->kategori_pemilu_id,
         // ]);
 
+        $toJson = json_encode($this->result, true);
+
+        
+
         ModelsTestData::create([
-            'user_id' => auth()->id() ?? null,
-            // 'tps_id' => $this->tps_id,
+            'user_id' => $this->user_id,
+            'tps_id' => $this->tps_id,
+            // 'user_id' =>Auth::id() ?? null,
+            // 'tps_id' => Auth::user()->tps_id,
             'kategori_pemilu_id' => $this->kategori_pemilu_id,
             'result' => $this->result,
+            // 'result' => $this->data,
             // 'result' => [
             //     // array_values(
             //         'paslon_id' => $this->result[1]['paslon_id'],
