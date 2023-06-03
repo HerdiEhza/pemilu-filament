@@ -14,7 +14,7 @@ class TestData extends Model
     public $table = 'test_data';
 
     protected $casts = [
-        'result' => 'json',
+        'result' => 'array',
         // 'result' => DataTestData::class,
         // 'result' => DataCollection::class.':'.DataTestData::class,
     ];

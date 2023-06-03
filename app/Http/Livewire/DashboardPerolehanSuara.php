@@ -10,6 +10,7 @@ use App\Models\PasanganCalon;
 use App\Models\PerolehanSuara;
 use App\Models\TestData;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class DashboardPerolehanSuara extends Component
@@ -60,19 +61,27 @@ class DashboardPerolehanSuara extends Component
         $grouped->values()->all();
 
         $getEja = TestData::where('kategori_pemilu_id', $this->kategoriPemiluActive)->get('result');
-        $eja = json_decode($getEja);
-        $data = new Collection($eja);
-        foreach ($eja as $rr) {
-            // dd($rr->result);
-            // dd($rr);
-            // echo json_encode(new Collection($rr->result));
-            new Collection($rr->result);
-        }
+        $data = new Collection($getEja);
+        $mapped = Arr::mapWithKeys($getEja, function (array $item, int $key) {
+            return [$item['email'] => $item['name']];
+        });
+        // $eja = json_decode($getEja);
+        // $data->dd();
 
-        $data = $rr;
+        // $data = $rr;
         $newData = new Collection($rr->result);
 
-        echo $newData;
+        foreach ($getEja as $key => $value) {
+            // echo json_encode($value);
+
+            // $matrix = $collection->crossJoin($value);
+
+            // $matrix->all();
+
+            // echo $matrix;
+        };
+
+        // echo $getEja;
         // $data->all();
 
         // $data = $rr->values();
@@ -84,7 +93,7 @@ class DashboardPerolehanSuara extends Component
         //     echo $result->perolehan_suara;
         // }
 
-        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'eja', 'newData'));
+        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'eja', 'newData', 'getEja' , 'data'));
     }
 }
 
