@@ -62,14 +62,14 @@ class DashboardPerolehanSuara extends Component
 
         $getEja = TestData::where('kategori_pemilu_id', $this->kategoriPemiluActive)->get('result');
         $data = new Collection($getEja);
-        $mapped = Arr::mapWithKeys($getEja, function (array $item, int $key) {
-            return [$item['email'] => $item['name']];
-        });
+        // $mapped = Arr::mapWithKeys($getEja, function (array $item, int $key) {
+        //     return [$item['email'] => $item['name']];
+        // });
         // $eja = json_decode($getEja);
         // $data->dd();
 
         // $data = $rr;
-        $newData = new Collection($rr->result);
+        // $newData = new Collection($rr->result);
 
         foreach ($getEja as $key => $value) {
             // echo json_encode($value);
@@ -93,7 +93,7 @@ class DashboardPerolehanSuara extends Component
         //     echo $result->perolehan_suara;
         // }
 
-        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'eja', 'newData', 'getEja' , 'data'));
+        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'getEja' , 'data'));
     }
 }
 
