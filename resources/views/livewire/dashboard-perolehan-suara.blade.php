@@ -14,11 +14,12 @@
             @endforeach
             @endforeach
 
-            {{-- @foreach ($collect as )
-
+            {{-- @foreach ($brr as $c)
+                {{ $c['paslon_id'] }}
             @endforeach --}}
-            {{-- {{echo $data}} --}}
-            {{dd($collect)}}
+            {{-- {{echo $collect}} --}}
+            {{-- {{dd($collect)}} --}}
+            {{-- {{dd($value)}} --}}
 
         </div>
     </div>

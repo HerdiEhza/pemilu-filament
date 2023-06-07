@@ -75,8 +75,28 @@ class DashboardPerolehanSuara extends Component
             foreach($gt->result as $dat) {
                 $collect = collect($dat);
             }
+        };
+
+        $getDta = DB::table('test_data')->where('kategori_pemilu_id', $this->kategoriPemiluActive)->get('result');
+        // $brr = collect($getEja)->avg('perolehan_suara');
+        // $reslt = array_values($getDta);
+        
+        // $brr = collect($getDta);
+        
+        foreach ($getDta as $key => $value) {
+            // $brr = collect($value);
+            foreach ($value as $cc) {
+                // return $brr = $cc;
+            }
         }
-        // $collect->dd();
+        $brr = collect($cc);
+        $brr->values()->all();
+        $value = $brr->get('perolehan_suara');
+        // $users = DB::table('pasangan_calons')
+        //     ->select(DB::table('test_data'))
+        //     ->where('kategori_pemilu_id', $this->kategoriPemiluActive)
+        //     ->groupBy('status')
+        //     ->get();
 
         // echo $getEja;
         // $data->all();
@@ -90,7 +110,7 @@ class DashboardPerolehanSuara extends Component
         //     echo $result->perolehan_suara;
         // }
 
-        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'getEja' , 'data', 'collect'));
+        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'getEja' , 'data', 'collect', 'brr', 'value'));
     }
 }
 
