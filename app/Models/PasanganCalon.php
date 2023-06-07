@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PasanganCalon extends Model
 {
@@ -25,6 +26,16 @@ class PasanganCalon extends Model
     public function partais() : BelongsToMany
     {
         return $this->belongsToMany(DataPartai::class);
+    }
+
+    public function perolehanSuara() : HasMany
+    {
+        return $this->HasMany(TpsResult::class);
+    }
+
+    public function test()
+    {
+        return $this->perolehanSuara()->toArray();
     }
 
     public function kategoriPemilu() : BelongsTo

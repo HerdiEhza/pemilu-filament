@@ -24,6 +24,7 @@ Route::redirect('/', '/login');
 Route::middleware('auth')->group(function () {
     // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/tps', \App\Http\Livewire\TpsInput::class)->name('tps');
     Route::get('/dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('dashboard');
     Route::get('/input-suara', \App\Http\Livewire\InputDataSuara::class)->name('input-suara');
     Route::get('/test', \App\Http\Livewire\TestData::class)->name('test');

@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tps_hasils', function (Blueprint $table) {
-            $table->id();
-            $table->string('paslon_id');
+        Schema::create('tps_results', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('pasangan_calon_id');
+            $table->foreign('pasangan_calon_id')->references('id')->on('pasangan_calons')->onDelete('cascade');
             $table->string('nama_pasangan_calon');
             $table->string('perolehan_suara');
+            $table->unsignedBigInteger('tps_input_id');
+            $table->foreign('tps_input_id')->references('id')->on('tps_inputs')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tps_hasils');
+        Schema::dropIfExists('tps_results');
     }
 };
