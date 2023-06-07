@@ -71,15 +71,12 @@ class DashboardPerolehanSuara extends Component
         // $data = $rr;
         // $newData = new Collection($rr->result);
 
-        foreach ($getEja as $key => $value) {
-            // echo json_encode($value);
-
-            // $matrix = $collection->crossJoin($value);
-
-            // $matrix->all();
-
-            // echo $matrix;
-        };
+        foreach($getEja as $gt) {
+            foreach($gt->result as $dat) {
+                $collect = collect($dat);
+            }
+        }
+        // $collect->dd();
 
         // echo $getEja;
         // $data->all();
@@ -93,7 +90,7 @@ class DashboardPerolehanSuara extends Component
         //     echo $result->perolehan_suara;
         // }
 
-        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'getEja' , 'data'));
+        return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'perolehanSuara', 'kategoriPemilus', 'pakaiDb', 'uisadhnf', 'grouped', 'getEja' , 'data', 'collect'));
     }
 }
 

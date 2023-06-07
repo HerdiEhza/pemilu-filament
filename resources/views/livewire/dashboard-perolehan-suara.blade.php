@@ -13,8 +13,12 @@
                 <br/>
             @endforeach
             @endforeach
+
+            {{-- @foreach ($collect as )
+
+            @endforeach --}}
             {{-- {{echo $data}} --}}
-            {{-- {{dd($gt->result)}} --}}
+            {{dd($collect)}}
 
         </div>
     </div>
