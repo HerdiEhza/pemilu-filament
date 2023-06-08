@@ -26,12 +26,12 @@
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Nomor KTP</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                        {{ Auth::user()->no_ktp }}</dd>
+                                        {{ Auth::user()->nomor_ktp }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Nomor HP</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                        {{ Auth::user()->tps->no_hp }}</dd>
+                                        {{ Auth::user()->nomor_hp }}</dd>
                                 </div>
                             </dl>
                         </div>
@@ -126,17 +126,17 @@
                                     </div>
                                     @empty
                                     <div class="relative w-full h-64 col-span-3 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8">                                        <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
-                                        <div class="flex flex-col items-center">
-                                            <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto bg-red-100 rounded-full sm:mx-0 sm:h-10 sm:w-10">
-                                            <svg class="w-16 h-16 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <div class="flex flex-col items-center text-center">
+                                            <div class="flex items-center justify-center flex-shrink-0 w-20 h-20 mx-auto bg-red-100 rounded-full sm:mx-0">
+                                            <svg class="text-red-600 w-14 h-14" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                                             </svg>
                                             </div>
-                                            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                            <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
-                                            <div class="mt-2">
-                                                <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
-                                            </div>
+                                            <div class="mt-6 text-center">
+                                                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Uppss...!</h3>
+                                                <div class="mt-2">
+                                                    <p class="text-sm text-gray-500">Maaf list Pasangan Calon tidak dapat ditampilkan, harap hubungi Admin!</p>
+                                                </div>
                                             </div>
                                         </div>
                                         </div>

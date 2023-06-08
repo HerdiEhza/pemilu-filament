@@ -32,7 +32,7 @@
                         {{-- @foreach ($data->perolehanSuara as $hasil)
                             {{ $hasil->perolehan_suara }}
                         @endforeach --}}
-                        {{ $data->total_suara }}
+                        {{ $data->total_suara ?? 0 }}
                         {{-- {{ $perolehanSuara }} --}}
                 </h1>
                 <br>

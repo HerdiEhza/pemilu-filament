@@ -27,12 +27,35 @@ class DatabaseSeeder extends Seeder
             WilayahSeeder::class,
             DataPemiluSeeder::class,
         ]);
-        
+
         \App\Models\User::factory()->create([
             'name' => 'Herdi',
             'email' => 'marketing@dku.id',
             'password' => Hash::make('Mekikau19'),
             'tps_id' => 1,
+            'nomor_ktp' => '6118476830904',
+            'nomor_hp' => '08967273567',
+            'is_admin' => true
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'user1',
+            'email' => 'user1@dku.id',
+            'password' => Hash::make('Mekikau19'),
+            'tps_id' => 1,
+            'nomor_ktp' => '6118478970904',
+            'nomor_hp' => '08967265567',
+            'is_admin' => false
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'user2',
+            'email' => 'user2@dku.id',
+            'password' => Hash::make('Mekikau19'),
+            'tps_id' => 2,
+            'nomor_ktp' => '6118478830963',
+            'nomor_hp' => '08967235567',
+            'is_admin' => false
         ]);
     }
 }

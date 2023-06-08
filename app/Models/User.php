@@ -52,6 +52,11 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
+    public function isAdmin(User $user)
+    {
+        return $user->where('is_admin', true)->exists();
+    }
+
     public function author() : BelongsTo
     {
         return $this->BelongsTo(DataTps::class);

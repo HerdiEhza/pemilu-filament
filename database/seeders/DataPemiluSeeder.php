@@ -401,6 +401,14 @@ class DataPemiluSeeder extends Seeder
                 'kecamatan_id' => 3,
                 'kelurahan_desa_id' => 4,
             ],
+            [
+                'id' => 2,
+                'nama_tps' => 'TPS 02',
+                'provinsi_id' => 1,
+                'kabupaten_kota_id' => 5,
+                'kecamatan_id' => 4,
+                'kelurahan_desa_id' => 7,
+            ],
         ];
 
         foreach ($dataTps as $dt)

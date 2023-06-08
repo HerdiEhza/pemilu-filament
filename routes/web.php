@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,13 @@ Route::redirect('/', '/login');
 Route::middleware('auth')->group(function () {
     // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/tps', \App\Http\Livewire\TpsInput::class)->name('tps');
+    Route::get('/input-suara', \App\Http\Livewire\TpsInput::class)->name('input-suara');
+    Route::get('/list-suara', \App\Http\Livewire\TpsList\Index::class)->name('list-suara.index');
+    Route::get('/list-suara/{id}/edit', \App\Http\Livewire\TpsList\Edit::class)->name('list-suara.edit');
+    Route::get('/list-suara/{id}/view', \App\Http\Livewire\TpsList\View::class)->name('list-suara.view');
+
     Route::get('/dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('dashboard');
-    Route::get('/input-suara', \App\Http\Livewire\InputDataSuara::class)->name('input-suara');
+    // Route::get('/input-suara', \App\Http\Livewire\InputDataSuara::class)->name('input-suara');
 
     // Route::get('data-tps/eja', \App\Http\Livewire\InputDataSuara\Input::class)->name('data-tps.eja');
 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('nomor_hp')->nullable()->unique();
             $table->string('nomor_ktp')->nullable()->unique();
             $table->unsignedBigInteger('tps_id')->nullable();
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
