@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('pasangan_calon_id');
             $table->foreign('pasangan_calon_id')->references('id')->on('pasangan_calons')->onDelete('cascade');
             $table->string('nama_pasangan_calon');
-            $table->string('perolehan_suara');
+            $table->string('perolehan_suara')->default('0');
             $table->unsignedBigInteger('tps_input_id');
             $table->foreign('tps_input_id')->references('id')->on('tps_inputs')->onDelete('cascade');
             $table->timestamps();

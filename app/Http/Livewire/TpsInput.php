@@ -2,63 +2,104 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\DataPartai;
 use Livewire\Component;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 use App\Models\TpsInput as ModelsTpsInput;
 use App\Models\TpsResult;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 
 class TpsInput extends Component
 {
-    public $user_id;
-    public $tps_id;
+    public $currentStep = 1;
+
+    public $paslons;
     public $kategori_pemilu_id;
-    public $test;
-    public $paslon_id;
-    public $nama_paslon;
-    public $perolehan_suara;
     public $result = [];
+
+    // protected $rules = [
+    //     'kategori_pemilu_id' => 'required|email',
+    // ];
+
+    // protected $messages = [
+    //     'kategori_pemilu_id.required' => 'Harap pilih Kategori PEMILU terlebih dahulu.',
+    // ];
+
+    public function firstStepSubmit()
+    {
+        // $validatedData = $this->validate([
+        //     'kategori_pemilu_id' => 'required',
+        // ]);
+
+        $this->currentStep = 2;
+    }
+
+    public function secondStepSubmit()
+    {
+        $validatedData  = $this->validate([
+        //     'result' => 'required, array',
+            'kategori_pemilu_id' => 'required',
+        ]);
+
+        $this->currentStep = 3;
+    }
+
+    public function back($step)
+    {
+        $this->currentStep = $step;
+    }
 
     public function mount()
     {
-        $this->user_id = Auth::id();
-        $this->tps_id = Auth::user()->tps_id;
+        $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','nama_partai_id','kategori_pemilu_id')->where('kategori_pemilu_id', $this->kategori_pemilu_id)->get();
+    }
+
+    public function updated()
+    {
+        $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','nama_partai_id','kategori_pemilu_id')->where('kategori_pemilu_id', $this->kategori_pemilu_id)->get();
     }
 
     public function submitForm()
     {
+        $paslonData = PasanganCalon::select('id','nama_pasangan_calon')->get();
+
         $master = ModelsTpsInput::create([
             'user_id' => Auth::id(),
             'tps_id' => Auth::user()->tps_id,
             'kategori_pemilu_id' => $this->kategori_pemilu_id,
         ]);
 
-        foreach ($this->result as $key => $value) {
-            TpsResult::create([
-                'pasangan_calon_id' => $value['pasangan_calon_id'],
-                'nama_pasangan_calon' => $value['nama_paslon'],
-                'perolehan_suara' => $value['perolehan_suara'],
-                'tps_input_id' => $master->id
-            ]);
+        foreach ($this->result as $index => $result) {
+            foreach ($paslonData as $paslon) {
+                if ($index == $paslon->id) {
+                    TpsResult::create([
+                        'pasangan_calon_id' => $paslon->id,
+                        'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
+                        'perolehan_suara' => $result['perolehan_suara'] ?? '0',
+                        'tps_input_id' => $master->id
+                    ]);
+                }
+            }
         }
 
         $this->clearForm();
 
-        // $this->currentStep = 1;
+        $this->currentStep = 1;
     }
 
     public function clearForm()
     {
-        $this->user_id = '';
+        $this->result = [];
         $this->kategori_pemilu_id = '';
     }
 
     public function render()
     {
-        $kategoriP = KategoriPemilu::all();
-        $paslons = PasanganCalon::where('kategori_pemilu_id', $this->kategori_pemilu_id)->get();
+        $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')->get();
+        $partais = DataPartai::select('id', 'nama_partai')->get();
 
-        return view('livewire.tps-input', compact('kategoriP', 'paslons'));
+        return view('livewire.tps-input', compact('kategoriP', 'partais'));
     }
 }
