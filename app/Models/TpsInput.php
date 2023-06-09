@@ -15,6 +15,7 @@ class TpsInput extends Model
         'user_id',
         'tps_id',
         'kategori_pemilu_id',
+        'is_active',
     ];
 
     public function hasil() : HasMany

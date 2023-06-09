@@ -19,7 +19,7 @@
                         <x-nav-link :href="route('input-suara')" :active="request()->routeIs('input-suara')">
                             {{ __('Input suara') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('list-suara.index')" :active="request()->routeIs('list-suara.index')">
+                        <x-nav-link :href="route('list-suara.index')" :active="request()->routeIs(['list-suara.index', 'list-suara.edit','list-suara.view'])">
                             {{ __('List suara') }}
                         </x-nav-link>
                     {{-- @endif --}}

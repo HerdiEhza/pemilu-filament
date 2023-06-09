@@ -78,7 +78,8 @@ class TpsInput extends Component
                         'pasangan_calon_id' => $paslon->id,
                         'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
                         'perolehan_suara' => $result['perolehan_suara'] ?? '0',
-                        'tps_input_id' => $master->id
+                        'tps_input_id' => $master->id,
+                        'is_disable' => false
                     ]);
                 }
             }
@@ -97,7 +98,13 @@ class TpsInput extends Component
 
     public function render()
     {
-        $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')->get();
+        $checkInputSuara = ModelsTpsInput::select('id', 'user_id', 'kategori_pemilu_id')->where('is_active', true)->get();
+
+        $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')
+                            ->whereNotIn('id', $checkInputSuara)
+                            ->get();
+
+        // $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')->get();
         $partais = DataPartai::select('id', 'nama_partai')->get();
 
         return view('livewire.tps-input', compact('kategoriP', 'partais'));

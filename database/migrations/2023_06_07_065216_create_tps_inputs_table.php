@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('tps_id');
             $table->string('kategori_pemilu_id');
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

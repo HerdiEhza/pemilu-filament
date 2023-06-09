@@ -117,11 +117,11 @@
                                             <input value="{{ $ps->nama_pasangan_calon }}" type="hidden" name="nama_pasangan_calon"
                                                 id="nama_pasangan_calon"
                                                 class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
-                                            {{-- <input wire:model.lazy="result.{{ $ps->id }}.perolehan_suara" type="number"
+                                            <input wire:model.lazy="result.{{ $ps->id }}.perolehan_suara" type="number"
                                                 name="perolehan_suara" id="perolehan_suara"
-                                                class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"> --}}
-                                            <x-inputs.number wire:model.lazy="result.{{ $ps->id }}.perolehan_suara" type="number" class="!w-full"
-                                                name="perolehan_suara" id="perolehan_suara" />
+                                                class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                                            {{-- <x-inputs.number wire:model.lazy="result.{{ $ps->id }}.perolehan_suara" type="number" class="!w-full"
+                                                name="perolehan_suara" id="perolehan_suara" /> --}}
                                         </div>
                                     </div>
                                     @empty
