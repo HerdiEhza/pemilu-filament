@@ -3,10 +3,18 @@
         <div class="bg-white shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
 
-                <div class="px-4 sm:px-0">
-                    <h3 class="text-base font-semibold leading-7 text-gray-900">Input Suara PEMILU</h3>
-                    <p class="max-w-2xl mt-1 text-sm leading-6 text-gray-500">Sebelum lanjut pastikan data
-                        dibawah sesuai dengan identitas Anda.</p>
+                <div class="flex items-center justify-between w-full px-4 sm:px-0">
+                    <div>
+                        <h3 class="text-base font-semibold leading-7 text-gray-900">Input Suara PEMILU</h3>
+                        <p class="max-w-2xl mt-1 text-sm leading-6 text-gray-500">Sebelum lanjut pastikan data
+                            dibawah sesuai dengan identitas Anda.</p>
+                    </div>
+                    <button wire:click="$emit('updateList')" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Refresh
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2 -mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                        </svg>
+                    </button>
                 </div>
                 <div class="mt-6 overflow-x-auto border-t border-gray-100">
                     <table class="w-full mt-6 text-sm border-collapse table-auto">
@@ -59,9 +67,6 @@
                                 </td>
                             </tr>
 
-                            {{-- @foreach ($list->hasil as $hasil)
-                            {{ $hasil->pasangan_calon_id }}
-                            @endforeach --}}
                             @empty
 
                             @endforelse

@@ -12,6 +12,12 @@ class DashboardPerolehanSuara extends Component
 {
     public $kategoriPemiluActive = 1;
 
+    protected $listeners = [
+        // 'perolehan-suara-submitted' => 'render'
+        'updateListSuara' => 'render'
+        // '$refresh'
+    ];
+
     public function render()
     {
         $kategoriPemilus = KategoriPemilu::all();

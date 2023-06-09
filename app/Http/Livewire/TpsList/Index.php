@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\TpsList;
 
 use App\Models\TpsInput;
+use App\Models\TpsResult;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use WireUi\Traits\Actions
@@ -57,7 +58,7 @@ class Index extends Component
             'description' => 'Mengubah status list input suara menjadi tidak aktif?',
             'icon'        => 'question',
             'accept'      => [
-                'label'  => 'Tentu, matikan list',
+                'label'  => 'Tentu, nonaktifkan iput-an suara',
                 'method' => 'unactive',
                 'params' => 'Saved',
             ],
@@ -75,6 +76,19 @@ class Index extends Component
         $this->tpsInput->tps_id = $this->tpsInput->tps_id;
         $this->tpsInput->kategori_pemilu_id = $this->tpsInput->kategori_pemilu_id;
         $this->tpsInput->is_active = true;
+        $this->tpsInput->hasil;
+
+        $hasilData = $this->tpsInput->hasil;
+
+        foreach ($hasilData as $result) {
+            $result->pasangan_calon_id = $result->pasangan_calon_id;
+            $result->nama_pasangan_calon = $result->nama_pasangan_calon;
+            $result->perolehan_suara = $result->perolehan_suara;
+            $result->tps_input_id = $result->tps_input_id;
+            $result->is_active  = true;
+            $result->save();
+        }
+
         $this->tpsInput->save();
 
         $this->emit('updateList');
@@ -89,6 +103,18 @@ class Index extends Component
         $this->tpsInput->tps_id = $this->tpsInput->tps_id;
         $this->tpsInput->kategori_pemilu_id = $this->tpsInput->kategori_pemilu_id;
         $this->tpsInput->is_active = false;
+
+        $hasilData = $this->tpsInput->hasil;
+
+        foreach ($hasilData as $result) {
+            $result->pasangan_calon_id = $result->pasangan_calon_id;
+            $result->nama_pasangan_calon = $result->nama_pasangan_calon;
+            $result->perolehan_suara = $result->perolehan_suara;
+            $result->tps_input_id = $result->tps_input_id;
+            $result->is_active  = false;
+            $result->save();
+        }
+
         $this->tpsInput->save();
 
         $this->emit('updateList');

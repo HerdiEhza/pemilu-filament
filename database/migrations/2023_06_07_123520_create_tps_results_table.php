@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('perolehan_suara')->default('0');
             $table->unsignedBigInteger('tps_input_id');
             $table->foreign('tps_input_id')->references('id')->on('tps_inputs')->onDelete('cascade');
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

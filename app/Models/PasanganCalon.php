@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class PasanganCalon extends Model
 {
@@ -30,13 +31,13 @@ class PasanganCalon extends Model
 
     public function perolehanSuara() : HasMany
     {
-        return $this->HasMany(TpsResult::class);
+        return $this->HasMany(TpsResult::class)->where('is_active', true);
     }
 
-    public function test()
-    {
-        return $this->perolehanSuara()->toArray();
-    }
+    // public function test()
+    // {
+    //     return $this->perolehanSuara()->toArray();
+    // }
 
     public function kategoriPemilu() : BelongsTo
     {

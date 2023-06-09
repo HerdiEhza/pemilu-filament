@@ -9,6 +9,7 @@ use App\Models\PasanganCalon;
 use App\Models\TpsInput as ModelsTpsInput;
 use App\Models\TpsResult;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Validator;
 
 class TpsInput extends Component
@@ -79,7 +80,7 @@ class TpsInput extends Component
                         'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
                         'perolehan_suara' => $result['perolehan_suara'] ?? '0',
                         'tps_input_id' => $master->id,
-                        'is_disable' => false
+                        'is_active	' => true
                     ]);
                 }
             }
@@ -87,7 +88,11 @@ class TpsInput extends Component
 
         $this->clearForm();
 
+        // $this->emitTo('DashboardPerolehanSuara', 'updateList');
+
         $this->currentStep = 1;
+        // $this->emitTo('dashboard-perolehan-suara', 'updateListSuara');
+        $this->emit('updateListSuara');
     }
 
     public function clearForm()
@@ -98,11 +103,12 @@ class TpsInput extends Component
 
     public function render()
     {
-        $checkInputSuara = ModelsTpsInput::select('id', 'user_id', 'kategori_pemilu_id')->where('is_active', true)->get();
+        // $checkInputSuara = DB::table('tps_inputs')->where('is_active', true)->get();
+        $checkInputSuara = DB::table('tps_inputs')->where('user_id', Auth::id())->where('is_active', true)->select('kategori_pemilu_id');
 
-        $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')
-                            ->whereNotIn('id', $checkInputSuara)
-                            ->get();
+        $kategoriP = DB::table('kategori_pemilus')
+                        ->whereNotIn('id', $checkInputSuara)
+                        ->get();
 
         // $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')->get();
         $partais = DataPartai::select('id', 'nama_partai')->get();
