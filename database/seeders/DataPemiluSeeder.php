@@ -10,169 +10,200 @@ class DataPemiluSeeder extends Seeder
     {
         $partai =  [
             [
-                'id' => 1,
-                'nama_partai' => 'Partai Demokrasi Indonesia Perjuangan (PDI-P)',
+                'nomor_urut' => 1,
+                'nama_partai' => 'Partai Kebangkitan Bangsa',
+                'singkatan' => 'PKB',
+                'pemimpin_partai' => 'Muhaimin Iskandar',
+                'logo_partai' => 'Logo_PKB.svg',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 2,
-                'nama_partai' => 'Partai Keadilan Sejahtera (PKS)',
+                'nomor_urut' => 2,
+                'nama_partai' => 'Partai Gerakan Indonesia Raya',
+                'singkatan' => 'Gerindra',
+                'pemimpin_partai' => 'Prabowo Subianto',
+                'logo_partai' => 'Logo_Gerindra.svg',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 3,
-                'nama_partai' => 'NasDem',
+                'nomor_urut' => 3,
+                'nama_partai' => 'Partai Demokrasi Indonesia Perjuangan',
+                'singkatan' => 'PDI-P',
+                'pemimpin_partai' => 'Megawati Soekarnoputri',
+                'logo_partai' => 'Logo_PDI-P.svg',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 4,
-                'nama_partai' => 'Partai Demokrat',
+                'nomor_urut' => 4,
+                'nama_partai' => 'Partai Golongan Karya',
+                'singkatan' => 'Golkar',
+                'pemimpin_partai' => 'Airlangga Hartarto',
+                'logo_partai' => 'Logo_Golkar.svg',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 5,
-                'nama_partai' => 'Partai Gerakan Indonesia Raya (Gerindra)',
+                'nomor_urut' => 5,
+                'nama_partai' => 'Partai Nasional Demokrat',
+                'singkatan' => 'NasDem',
+                'pemimpin_partai' => 'Surya Paloh',
+                'logo_partai' => 'Partai_NasDem.svg',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 6,
-                'nama_partai' => 'Partai Kebangkitan Bangsa (PKB)',
-            ],
-            [
-                'id' => 7,
-                'nama_partai' => 'Partai Persatuan Pembangunan (PPP)',
-            ],
-            [
-                'id' => 8,
-                'nama_partai' => 'Partai Golongan Karya (Golkar)',
-            ],
-            [
-                'id' => 9,
-                'nama_partai' => 'Partai Amanat Nasional (PAN)',
-            ],
-            [
-                'id' => 10,
-                'nama_partai' => 'Partai Persatuan Indonesia (Perindo)',
-            ],
-            [
-                'id' => 11,
-                'nama_partai' => 'Partai Bulan Bintang (PBB)',
-            ],
-            [
-                'id' => 12,
-                'nama_partai' => 'Partai Kebangkitan Nusantara (PKN)',
-            ],
-            [
-                'id' => 13,
-                'nama_partai' => 'Partai Garda Perubahan Indonesia (Garuda)',
-            ],
-            [
-                'id' => 14,
-                'nama_partai' => 'Partai Gelombang Rakyat Indonesia (Gelora)',
-            ],
-            [
-                'id' => 15,
-                'nama_partai' => 'Partai Hati Nurani Rakyat (Hanura)',
-            ],
-            [
-                'id' => 16,
-                'nama_partai' => 'Partai Solidaritas Indonesia (PSI)',
-            ],
-            [
-                'id' => 17,
+                'nomor_urut' => 6,
                 'nama_partai' => 'Partai Buruh',
+                'singkatan' => 'Buruh',
+                'pemimpin_partai' => 'Said Iqbal',
+                'logo_partai' => 'Partai_Buruh.jpg',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 18,
+                'nomor_urut' => 7,
+                'nama_partai' => 'Partai Gelombang Rakyat Indonesia',
+                'singkatan' => 'Gelora',
+                'pemimpin_partai' => 'Anis Matta',
+                'logo_partai' => 'Logo_partai_gelora.png',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 8,
+                'nama_partai' => 'Partai Keadilan Sejahtera',
+                'singkatan' => 'PKS',
+                'pemimpin_partai' => 'Ahmad Syaikhu',
+                'logo_partai' => 'PKS_logo_2020.png',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 9,
+                'nama_partai' => 'Partai Kebangkitan Nusantara',
+                'singkatan' => 'PKN',
+                'pemimpin_partai' => 'I Gede Pasek Suardika',
+                'logo_partai' => 'Bendera_Partai_Kebangkitan_Nusantara.svg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 10,
+                'nama_partai' => 'Partai Hati Nurani Rakyat',
+                'singkatan' => 'Hanura',
+                'pemimpin_partai' => 'Oesman Sapta Odang',
+                'logo_partai' => 'Logo_Hanura.svg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 11,
+                'nama_partai' => 'Partai Garda Perubahan Indonesia',
+                'singkatan' => 'Garuda',
+                'pemimpin_partai' => 'Ahmad Ridha Sabana',
+                'logo_partai' => 'Partai Garda perubahan indonesia.png',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 12,
+                'nama_partai' => 'Partai Amanat Nasional',
+                'singkatan' => 'PAN',
+                'pemimpin_partai' => 'Zulkifli Hasan',
+                'logo_partai' => 'Logo_PAN.svg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 13,
+                'nama_partai' => 'Partai Bulan Bintang',
+                'singkatan' => 'PBB',
+                'pemimpin_partai' => 'Yusril Ihza Mahendra',
+                'logo_partai' => 'Bulan_Bintang.jpg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 14,
+                'nama_partai' => 'Partai Demokrat',
+                'singkatan' => 'PD',
+                'pemimpin_partai' => 'Agus Harimurti Yudhoyono',
+                'logo_partai' => 'Logo_of_the_Democratic_Party_(Indonesia).svg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 15,
+                'nama_partai' => 'Partai Solidaritas Indonesia',
+                'singkatan' => 'PSI',
+                'pemimpin_partai' => 'Giring Ganesha',
+                'logo_partai' => 'Logo_of_Indonesian_Solidarity_Party.svg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 16,
+                'nama_partai' => 'Partai Persatuan Indonesia',
+                'singkatan' => 'Perindo',
+                'pemimpin_partai' => 'Hary Tanoesoedibjo',
+                'logo_partai' => 'PartaiPerindo.png',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 17,
+                'nama_partai' => 'Partai Persatuan Pembangunan',
+                'singkatan' => 'PPP',
+                'pemimpin_partai' => 'Muhamad Mardiono',
+                'logo_partai' => 'Logo_PPP.svg',
+                'is_partai_nasional' => true
+            ],
+            [
+                'nomor_urut' => 24,
                 'nama_partai' => 'Partai Ummat',
+                'singkatan' => 'PU',
+                'pemimpin_partai' => 'Ridho Rahmadi',
+                'logo_partai' => 'Ummah_Party_Logo.png',
+                'is_partai_nasional' => true
             ],
             [
-                'id' => 19,
-                'nama_partai' => 'Partai Keadilan dan Persatuan (PKP)',
+                'nomor_urut' => 18,
+                'nama_partai' => 'Partai Nanggroe Aceh',
+                'singkatan' => 'PNA',
+                'pemimpin_partai' => 'Irwandi Yusuf',
+                'logo_partai' => 'PNA.jpeg',
+                'is_partai_nasional' => false
             ],
             [
-                'id' => 20,
-                'nama_partai' => 'Partai Republik',
+                'nomor_urut' => 19,
+                'nama_partai' => 'Partai Generasi Atjeh Beusaboh Tha`at Dan Taqwa',
+                'singkatan' => 'Gabthat',
+                'pemimpin_partai' => 'Ahmad Tajuddin',
+                'logo_partai' => 'Peureute_Gabthat.png',
+                'is_partai_nasional' => false
             ],
             [
-                'id' => 21,
-                'nama_partai' => 'Partai Republik Satu',
+                'nomor_urut' => 20,
+                'nama_partai' => 'Partai Darul Aceh',
+                'singkatan' => 'PDA',
+                'pemimpin_partai' => 'Muhibbussabri A. Wahab',
+                'logo_partai' => 'PD_ACEH.jpg',
+                'is_partai_nasional' => false
             ],
             [
-                'id' => 22,
-                'nama_partai' => 'Partai Rakyat Adil Makmur (Prima)',
+                'nomor_urut' => 21,
+                'nama_partai' => 'Partai Aceh',
+                'singkatan' => 'PA',
+                'pemimpin_partai' => 'Muzakir Manaf',
+                'logo_partai' => 'Partai_Aceh_-_Aceh_Party.jpg',
+                'is_partai_nasional' => false
             ],
             [
-                'id' => 23,
-                'nama_partai' => 'Partai Republiku Indonesia',
+                'nomor_urut' => 22,
+                'nama_partai' => 'Partai Adil Sejahtera Aceh',
+                'singkatan' => 'PAS',
+                'pemimpin_partai' => 'Bulqaini',
+                'logo_partai' => 'Logo_PAS_ACEH.webp',
+                'is_partai_nasional' => false
             ],
             [
-                'id' => 24,
-                'nama_partai' => 'Partai Swara Rakyat Indonesia (Parsindo)',
-            ],
-            [
-                'id' => 25,
-                'nama_partai' => 'Partai Reformasi',
-            ],
-            [
-                'id' => 26,
-                'nama_partai' => 'Partai Negeri Daulat Indonesia (Pandai)',
-            ],
-            [
-                'id' => 27,
-                'nama_partai' => 'Partai Demokrasi Rakyat Indonesia',
-            ],
-            [
-                'id' => 28,
-                'nama_partai' => 'Partai Kedaulatan Rakyat (PKR)',
-            ],
-            [
-                'id' => 29,
-                'nama_partai' => 'Partai Berkarya',
-            ],
-            [
-                'id' => 30,
-                'nama_partai' => 'Partai Indonesia Bangkit Bersatu',
-            ],
-            [
-                'id' => 31,
-                'nama_partai' => 'Partai Pelita',
-            ],
-            [
-                'id' => 32,
-                'nama_partai' => 'Partai Kongres',
-            ],
-            [
-                'id' => 33,
-                'nama_partai' => 'Partai Pemersatu Bangsa',
-            ],
-            [
-                'id' => 34,
-                'nama_partai' => 'Partai Karya Republik',
-            ],
-            [
-                'id' => 35,
-                'nama_partai' => 'Partai Pandu Bangsa (PPB)',
-            ],
-            [
-                'id' => 36,
-                'nama_partai' => 'Partai Bhinneka Indonesia (PBI)',
-            ],
-            [
-                'id' => 37,
-                'nama_partai' => 'Partai Pergerakan Kebangkitan Desa (Perkasa)',
-            ],
-            [
-                'id' => 38,
-                'nama_partai' => 'Partai Masyumi',
-            ],
-            [
-                'id' => 39,
-                'nama_partai' => 'Partai Damai Kasih Bangsa (PDKB)',
-            ],
-            [
-                'id' => 40,
-                'nama_partai' => 'Partai Kedaulatan',
+                'nomor_urut' => 23,
+                'nama_partai' => 'Partai Suara Independen Rakyat Aceh',
+                'singkatan' => 'SIRA',
+                'pemimpin_partai' => 'Muslim Syamsuddin',
+                'logo_partai' => 'SIRA.jpg',
+                'is_partai_nasional' => false
             ],
         ];
 
-        foreach ($partai as $data)
-        {
+        foreach ($partai as $data) {
             \App\Models\DataPartai::create($data);
         }
 
@@ -387,8 +418,7 @@ class DataPemiluSeeder extends Seeder
             ],
         ];
 
-        foreach ($kategoriPemilu as $kaPem)
-        {
+        foreach ($kategoriPemilu as $kaPem) {
             \App\Models\KategoriPemilu::create($kaPem);
         }
 
@@ -411,8 +441,7 @@ class DataPemiluSeeder extends Seeder
             ],
         ];
 
-        foreach ($dataTps as $dt)
-        {
+        foreach ($dataTps as $dt) {
             \App\Models\DataTps::create($dt);
         }
 
@@ -443,8 +472,7 @@ class DataPemiluSeeder extends Seeder
             ],
         ];
 
-        foreach ($pasanganCalon as $paslon)
-        {
+        foreach ($pasanganCalon as $paslon) {
             \App\Models\PasanganCalon::create($paslon);
         }
     }

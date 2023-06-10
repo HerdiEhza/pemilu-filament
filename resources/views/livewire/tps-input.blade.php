@@ -1,14 +1,14 @@
 <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="bg-white shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900 justify-center flex flex-col">
+            <div class="flex flex-col justify-center p-6 text-gray-900">
 
                 <div class="px-4 sm:px-0">
                     <h3 class="text-base font-semibold leading-7 text-gray-900">Input Suara PEMILU</h3>
                     <p class="max-w-2xl mt-1 text-sm leading-6 text-gray-500">Sebelum lanjut pastikan data
                         dibawah sesuai dengan identitas Anda.</p>
                 </div>
-                {{-- <ol class="mt-6 flex items-center w-full">
+                {{-- <ol class="flex items-center w-full mt-6">
                     <li class="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800">
                         <span class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
                             <svg aria-hidden="true" class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
@@ -28,7 +28,7 @@
 
                 <div class="flex  {{ $currentStep != 1 ? 'hidden' : '' }}" id="step-1">
                     <div class="w-full">
-                        <ol class="mt-6 flex items-center w-full">
+                        <ol class="flex items-center w-full mt-6">
                             <li class="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800">
                                 <span class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 lg:w-6 lg:h-6 dark:text-gray-100" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
@@ -83,7 +83,7 @@
 
                 <div class=" {{ $currentStep != 2 ? 'hidden' : '' }}" id="step-2">
                     <div class="w-full">
-                        <ol class="mt-6 flex items-center w-full">
+                        <ol class="flex items-center w-full mt-6">
                             <li class="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800">
                                 <span class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
                                     <svg aria-hidden="true" class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
@@ -132,7 +132,7 @@
 
                 <div class=" {{ $currentStep != 3 ? 'hidden' : '' }}" id="step-3">
                     <div class="w-full">
-                        <ol class="mt-6 flex items-center w-full">
+                        <ol class="flex items-center w-full mt-6">
                             <li class="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800">
                                 <span class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
                                     <svg aria-hidden="true" class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
@@ -159,19 +159,21 @@
                                         </div>
                                         <div class="top-0 flex flex-col p-2">
                                             <h1 class="text-center text-gray-800">{{ $ps->nama_pasangan_calon }}</h1>
-                                            @foreach ($partais as $p)
-                                                @if (is_array($ps->nama_partai_id))
-                                                    @foreach ($ps->nama_partai_id as $np)
-                                                        @if ($p->id == $np)
-                                                            <p class="text-xs font-light text-center text-gray-400">{{ $p->nama_partai }}</p>
+                                            <div class="flex items-center justify-center space-x-2">
+                                                @foreach ($partais as $p)
+                                                    @if (is_array($ps->nama_partai_id))
+                                                        @foreach ($ps->nama_partai_id as $np)
+                                                            @if ($p->id == $np)
+                                                                <img class="h-8" src="{{ asset('assets/logo-partai/'.$p->logo_partai) }}" alt="">
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        @if ($p->id == $ps->nama_partai_id)
+                                                            <img class="h-8" src="{{ asset('assets/logo-partai/'.$p->logo_partai) }}" alt="">
                                                         @endif
-                                                    @endforeach
-                                                @else
-                                                    @if ($p->id == $ps->nama_partai_id)
-                                                        <p class="text-xs font-light text-center text-gray-400">{{ $p->nama_partai }}</p>
                                                     @endif
-                                                @endif
-                                            @endforeach
+                                                @endforeach
+                                            </div>
                                         </div>
                                         <div class="relative flex items-center justify-center p-2 mt-2">
                                             <input value="{{ $ps->id }}" type="hidden" name="pasangan_calon_id"
@@ -214,11 +216,16 @@
                             >
                                 Kembali
                             </button>
-                            <button wire:click.prevent="submitForm"
+                            <button wire:click.prevent="submitForm" wire:loading.attr="disabled" wire:loading.class="cursor-progress"
                                 class="@empty($ps) hidden @endempty flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 type="button"
                             >
-                                Submit!
+                                <div wire:loading wire:target="submitForm">
+                                    Loading...
+                                </div>
+                                <div wire:loading.remove wire:target="submitForm">
+                                    Submit!
+                                </div>
                             </button>
                         </div>
                     </div>

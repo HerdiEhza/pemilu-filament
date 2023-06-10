@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/list-suara', \App\Http\Livewire\TpsList\Index::class)->name('list-suara.index');
     Route::get('/list-suara/{id}/edit', \App\Http\Livewire\TpsList\Edit::class)->name('list-suara.edit');
     Route::get('/list-suara/{id}/view', \App\Http\Livewire\TpsList\View::class)->name('list-suara.view');
+    
+    Route::get('/test', \App\Http\Livewire\TestFoto::class)->name('test');
 
     Route::get('/dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('dashboard');
     // Route::get('/input-suara', \App\Http\Livewire\InputDataSuara::class)->name('input-suara');

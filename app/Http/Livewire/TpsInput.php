@@ -111,7 +111,7 @@ class TpsInput extends Component
                         ->get();
 
         // $kategoriP = KategoriPemilu::select('id','nama_kategori_pemilu')->get();
-        $partais = DataPartai::select('id', 'nama_partai')->get();
+        $partais = DataPartai::select('id', 'nama_partai', 'logo_partai')->get();
 
         return view('livewire.tps-input', compact('kategoriP', 'partais'));
     }

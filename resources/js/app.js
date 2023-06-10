@@ -1,7 +1,12 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+import Alpine from 'alpinejs'
+import AlpineFloatingUI from '@awcodes/alpine-floating-ui'
+import NotificationsAlpinePlugin from '../../vendor/filament/notifications/dist/module.esm'
 
-window.Alpine = Alpine;
+Alpine.plugin(AlpineFloatingUI)
+Alpine.plugin(NotificationsAlpinePlugin)
 
-Alpine.start();
+window.Alpine = Alpine
+
+Alpine.start()

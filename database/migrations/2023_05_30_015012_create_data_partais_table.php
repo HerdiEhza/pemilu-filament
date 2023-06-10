@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('data_partais', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nomor_urut');
             $table->string('nama_partai');
+            $table->string('singkatan');
+            $table->string('pemimpin_partai');
+            $table->string('logo_partai');
+            $table->boolean('is_partai_nasional')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

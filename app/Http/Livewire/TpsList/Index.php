@@ -15,6 +15,8 @@ class Index extends Component
     public $listSuara;
     public $isDisable;
     public $tpsInput;
+    public $reloadList;
+    public $checkList;
 
     protected $listeners = [
         'activate',
@@ -27,28 +29,57 @@ class Index extends Component
     {
         $this->listSuara = TpsInput::all();
     }
+    
     public function dehydrate()
     {
         $this->listSuara = TpsInput::all();
     }
 
+    public function updatedTpsInput()
+    {
+        $this->checkList = TpsInput::where('id', '!=', $this->tpsInput->id)->get();
+    }
+    public function updated()
+    {
+        $this->checkList = TpsInput::where('id', '!=', $this->tpsInput->id)->get();
+    }
+
+    public function reloadList()
+    {
+        $this->emit('updateList');
+    }
+
     public function aktif(TpsInput $tpsInput): void
     {
-        $this->dialog()->confirm([
-            'title'       => 'Apakah Anda yakin?',
-            'description' => 'Mengubah status list input suara menjadi aktif?',
-            'icon'        => 'question',
-            'accept'      => [
-                'label'  => 'Tentu, aktifkan list',
-                'method' => 'activate',
-                'params' => 'Saved',
-            ],
-            'reject' => [
-                'label'  => 'No, cancel',
-                'method' => 'cancelledAktif',
-            ],
-        ]);
-        $this->tpsInput = $tpsInput;
+        // $this->tpsInput = $tpsInput;
+
+        // $getCheckList = TpsInput::where('id', '!=', $tpsInput->id)->get();
+        // $this->checkList = $getCheckList;
+        // foreach($this->checkList as $check)
+        // {
+        //     if($check->is_active == true)
+        //     {
+        //         $this->dialog()->error(
+        //             $title = 'Error !!!',
+        //             $description = 'Your profile was not saved'
+        //         );
+        //     } else {
+                $this->dialog()->confirm([
+                    'title'       => 'Apakah Anda yakin?',
+                    'description' => 'Mengubah status list input suara menjadi aktif?',
+                    'icon'        => 'question',
+                    'accept'      => [
+                        'label'  => 'Tentu, aktifkan list',
+                        'method' => 'activate',
+                        'params' => 'Saved',
+                    ],
+                    'reject' => [
+                        'label'  => 'No, cancel',
+                        'method' => 'cancelledAktif',
+                    ],
+                ]);
+        //     }
+        // }
     }
 
     public function diaktif(TpsInput $tpsInput): void

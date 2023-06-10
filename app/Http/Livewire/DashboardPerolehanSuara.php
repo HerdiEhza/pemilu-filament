@@ -14,9 +14,14 @@ class DashboardPerolehanSuara extends Component
 
     protected $listeners = [
         // 'perolehan-suara-submitted' => 'render'
-        'updateListSuara' => 'render'
+        'updateListDashboard' => 'render'
         // '$refresh'
     ];
+
+    function reloadListDashboard()
+    {
+        $this->emit('updateListDashboard');
+    }
 
     public function render()
     {
