@@ -8,9 +8,12 @@ use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 use App\Models\TpsInput as ModelsTpsInput;
 use App\Models\TpsResult;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Validator;
+
+use Filament\Notifications\Notification;
 
 class TpsInput extends Component
 {
@@ -65,6 +68,7 @@ class TpsInput extends Component
     public function submitForm()
     {
         $paslonData = PasanganCalon::select('id','nama_pasangan_calon')->get();
+        $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $this->kategori_pemilu_id)->first();
 
         $master = ModelsTpsInput::create([
             'user_id' => Auth::id(),
@@ -87,12 +91,15 @@ class TpsInput extends Component
         }
 
         $this->clearForm();
-
-        // $this->emitTo('DashboardPerolehanSuara', 'updateList');
-
         $this->currentStep = 1;
-        // $this->emitTo('dashboard-perolehan-suara', 'updateListSuara');
         $this->emit('updateListSuara');
+
+        // $recipient = auth()->user();
+        $recipient = User::where('is_admin', true)->get();
+        Notification::make()
+            ->title('Perhitungan suara masuk'.' | '.Auth::user()->tps->nama_tps)
+            ->body('Diinput oleh: '.Auth::user()->name.' | '.$namaKategoriPemilu->nama_kategori_pemilu)
+            ->sendToDatabase($recipient);
     }
 
     public function clearForm()

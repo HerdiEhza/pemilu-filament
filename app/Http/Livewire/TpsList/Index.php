@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\TpsList;
 
+use App\Models\KategoriPemilu;
 use App\Models\TpsInput;
 use App\Models\TpsResult;
+use App\Models\User;
+use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use WireUi\Traits\Actions
@@ -27,12 +30,12 @@ class Index extends Component
 
     public function mount()
     {
-        $this->listSuara = TpsInput::all();
+        $this->listSuara = TpsInput::where('user_id', Auth::id())->get();
     }
-    
+
     public function dehydrate()
     {
-        $this->listSuara = TpsInput::all();
+        $this->listSuara = TpsInput::where('user_id', Auth::id())->get();
     }
 
     public function updatedTpsInput()
@@ -51,7 +54,8 @@ class Index extends Component
 
     public function aktif(TpsInput $tpsInput): void
     {
-        // $this->tpsInput = $tpsInput;
+        $this->tpsInput = $tpsInput;
+        $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $tpsInput->kategori_pemilu_id)->first();
 
         // $getCheckList = TpsInput::where('id', '!=', $tpsInput->id)->get();
         // $this->checkList = $getCheckList;
@@ -80,10 +84,13 @@ class Index extends Component
                 ]);
         //     }
         // }
+
     }
 
     public function diaktif(TpsInput $tpsInput): void
     {
+        $this->tpsInput = $tpsInput;
+
         $this->dialog()->confirm([
             'title'       => 'Apakah Anda yakin?',
             'description' => 'Mengubah status list input suara menjadi tidak aktif?',
@@ -98,11 +105,12 @@ class Index extends Component
                 'method' => 'cancelledAktif',
             ],
         ]);
-        $this->tpsInput = $tpsInput;
     }
 
     public function activate(): void
     {
+        $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $this->tpsInput->kategori_pemilu_id)->first();
+
         $this->tpsInput->user_id = $this->tpsInput->user_id;
         $this->tpsInput->tps_id = $this->tpsInput->tps_id;
         $this->tpsInput->kategori_pemilu_id = $this->tpsInput->kategori_pemilu_id;
@@ -127,9 +135,19 @@ class Index extends Component
             'title'       => 'Status list input berhasil diaktifkan!',
             'icon'        => 'success'
         ]);
+
+        // $recipient = auth()->user();
+        $recipient = User::where('is_admin', true)->get();
+        Notification::make()
+            ->title('Record Perhitungan suara diaktifkan'.' | '.Auth::user()->tps->nama_tps)
+            ->body('Diaktifkan oleh: '.Auth::user()->name.' | '.$namaKategoriPemilu->nama_kategori_pemilu.', dengan id: '.$this->tpsInput->id)
+            ->sendToDatabase($recipient);
+
     }
     public function unactive(): void
     {
+        $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $this->tpsInput->kategori_pemilu_id)->first();
+
         $this->tpsInput->user_id = $this->tpsInput->user_id;
         $this->tpsInput->tps_id = $this->tpsInput->tps_id;
         $this->tpsInput->kategori_pemilu_id = $this->tpsInput->kategori_pemilu_id;
@@ -153,6 +171,13 @@ class Index extends Component
             'title'       => 'Status list input berhasil dinonaktifkan!',
             'icon'        => 'success'
         ]);
+
+        // $recipient = auth()->user();
+        $recipient = User::where('is_admin', true)->get();
+        Notification::make()
+            ->title('Record Perhitungan suara dinonaktifkan'.' | '.Auth::user()->tps->nama_tps)
+            ->body('Dinonaktifkan oleh: '.Auth::user()->name.' | '.$namaKategoriPemilu->nama_kategori_pemilu.', dengan id: '.$this->tpsInput->id)
+            ->sendToDatabase($recipient);
     }
 
     public function cancelledAktif(): void

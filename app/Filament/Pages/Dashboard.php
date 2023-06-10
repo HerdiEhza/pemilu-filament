@@ -17,7 +17,7 @@ class Dashboard extends BasePage
     {
         return [
             StatsOverview::class,
-            BlogPostsChart::class
+            // BlogPostsChart::class
         ];
     }
 }
