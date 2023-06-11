@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('tps_id');
             $table->string('kategori_pemilu_id');
             $table->boolean('is_active')->default(1);
+            $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('data_dapil_id', 'dapil_fk_8873445')->references('id')->on('data_dapils');
         });
     }
 

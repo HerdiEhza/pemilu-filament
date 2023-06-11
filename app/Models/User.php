@@ -30,6 +30,7 @@ class User extends Authenticatable implements FilamentUser
         'nomor_ktp',
         'alamat',
         'tps_id',
+        'data_dapil_id',
     ];
 
     /**
@@ -57,10 +58,10 @@ class User extends Authenticatable implements FilamentUser
         return $user->where('is_admin', true)->exists();
     }
 
-    public function author() : BelongsTo
-    {
-        return $this->BelongsTo(DataTps::class);
-    }
+    // public function author() : BelongsTo
+    // {
+    //     return $this->BelongsTo(DataTps::class);
+    // }
 
     public function canAccessFilament(): bool
     {
@@ -71,5 +72,10 @@ class User extends Authenticatable implements FilamentUser
     public function tps() : BelongsTo
     {
         return $this->BelongsTo(DataTps::class);
+    }
+
+    public function dapils() : BelongsTo
+    {
+        return $this->BelongsTo(DataDapil::class, 'data_dapil_id');
     }
 }

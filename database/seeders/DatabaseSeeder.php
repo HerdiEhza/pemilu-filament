@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\KategoriPemilu;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Laravolt\Indonesia\Seeds\CitiesSeeder;
@@ -25,7 +27,11 @@ class DatabaseSeeder extends Seeder
             // DistrictsSeeder::class,
             // VillagesSeeder::class,
             WilayahSeeder::class,
+            KategoriPemiluSeeder::class,
+            DataDapilSeeder::class,
             DataPemiluSeeder::class,
+            PaslonDprdProvinsiSeeder::class,
+            PaslonDprdKabKotaSeeder::class,
         ]);
 
         \App\Models\User::factory()->create([
@@ -35,7 +41,8 @@ class DatabaseSeeder extends Seeder
             'tps_id' => 1,
             'nomor_ktp' => '6118476830904',
             'nomor_hp' => '08967273567',
-            'is_admin' => true
+            'is_admin' => true,
+            'data_dapil_id' => 1
         ]);
 
         \App\Models\User::factory()->create([
@@ -45,7 +52,8 @@ class DatabaseSeeder extends Seeder
             'tps_id' => 1,
             'nomor_ktp' => '6118478970904',
             'nomor_hp' => '08967265567',
-            'is_admin' => false
+            'is_admin' => false,
+            'data_dapil_id' => 1
         ]);
 
         \App\Models\User::factory()->create([
@@ -55,7 +63,8 @@ class DatabaseSeeder extends Seeder
             'tps_id' => 2,
             'nomor_ktp' => '6118478830963',
             'nomor_hp' => '08967235567',
-            'is_admin' => false
+            'is_admin' => false,
+            'data_dapil_id' => 2
         ]);
     }
 }

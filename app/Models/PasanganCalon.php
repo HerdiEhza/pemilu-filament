@@ -18,6 +18,7 @@ class PasanganCalon extends Model
         'nama_pasangan_calon',
         'kategori_pemilu_id',
         'nama_partai_id',
+        'data_dapil_id',
     ];
 
     protected $casts = [
@@ -27,6 +28,11 @@ class PasanganCalon extends Model
     public function partais() : BelongsToMany
     {
         return $this->belongsToMany(DataPartai::class);
+    }
+
+    public function dapil() : BelongsTo
+    {
+        return $this->belongsTo(DataDapil::class, 'data_dapil_id');
     }
 
     public function perolehanSuara() : HasMany

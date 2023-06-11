@@ -10,7 +10,9 @@ class AddRelationshipFieldsToInputDataPaslonsTable extends Migration
     {
         Schema::table('pasangan_calons', function (Blueprint $table) {
             $table->unsignedBigInteger('kategori_pemilu_id')->nullable();
-            $table->foreign('kategori_pemilu_id', 'kategori_pemilu_fk_8515255')->references('id')->on('kategori_pemilus');
+            $table->foreign('kategori_pemilu_id')->references('id')->on('kategori_pemilus');
+            $table->unsignedBigInteger('data_dapil_id')->nullable();
+            $table->foreign('data_dapil_id')->references('id')->on('data_dapils');
             // $table->unsignedBigInteger('nama_partai_id')->nullable();
             // $table->foreign('nama_partai_id', 'nama_partai_fk_8515261')->references('id')->on('data_partais');
         });

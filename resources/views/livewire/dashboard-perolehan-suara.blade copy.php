@@ -129,3 +129,32 @@
     </div>
 </div>
 </div>
+
+@if (is_array($data->nama_partai_id))
+                        @foreach ($data->nama_partai_id as $np)
+                            @if ($p->id == $np)
+                                {{ $data->nama_pasangan_calon }}
+                                {{ $data->kategoriPemilu->nama_kategori_pemilu }}
+                                <br>
+                                {{-- @foreach ($partais as $p) --}}
+                                    @if (is_array($data->nama_partai_id))
+                                        @foreach ($data->nama_partai_id as $np)
+                                            @if ($p->id == $np)
+                                                {{ $p->nama_partai }} <br/>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        @if ($p->id == $data->nama_partai_id)
+                                            {{ $p->nama_partai }}
+                                        @endif
+                                    @endif
+                                {{-- @endforeach --}}
+                                <h1>
+                                    perolehan suara :
+                                    {{ $data->total_suara ?? 0 }}
+                                </h1>
+                                <br>
+                                <br>
+                            @endif
+                        @endforeach
+                    @else

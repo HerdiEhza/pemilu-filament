@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('data_partais', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nomor_urut');
+            $table->string('nomor_urut')->nullable();
             $table->string('nama_partai');
-            $table->string('singkatan');
-            $table->string('pemimpin_partai');
-            $table->string('logo_partai');
-            $table->boolean('is_partai_nasional')->default(1);
+            $table->string('singkatan')->nullable();
+            $table->string('pemimpin_partai')->nullable();
+            $table->string('logo_partai')->nullable();
+            $table->boolean('is_partai_nasional')->default(1)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

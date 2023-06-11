@@ -24,12 +24,14 @@ return new class extends Migration
             $table->string('nomor_hp')->nullable()->unique();
             $table->string('nomor_ktp')->nullable()->unique();
             $table->unsignedBigInteger('tps_id')->nullable();
+            $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('tps_id', 'tps_fk_8515445')->references('id')->on('data_tps');
+            $table->foreign('data_dapil_id', 'dapil_fk_8515445')->references('id')->on('data_dapils');
         });
     }
 

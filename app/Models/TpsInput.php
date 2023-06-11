@@ -32,4 +32,9 @@ class TpsInput extends Model
     {
         return $this->BelongsTo(DataTps::class);
     }
+
+    public function dapils() : BelongsTo
+    {
+        return $this->BelongsTo(DataDapil::class, 'data_dapil_id');
+    }
 }

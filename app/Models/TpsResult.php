@@ -25,4 +25,8 @@ class TpsResult extends Model
     {
         return $this->BelongsTo(PasanganCalon::class);
     }
+    public function dapils() : BelongsTo
+    {
+        return $this->BelongsTo(DataDapil::class, 'data_dapil_id');
+    }
 }

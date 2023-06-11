@@ -11,6 +11,10 @@ class CreateDataTpsTable extends Migration
         Schema::create('data_tps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_tps')->nullable();
+
+            $table->unsignedBigInteger('data_dapil_id');
+            $table->foreign('data_dapil_id')->references('id')->on('data_dapils')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });

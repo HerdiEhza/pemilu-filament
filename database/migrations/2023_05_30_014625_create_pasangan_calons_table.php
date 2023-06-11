@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('pasangan_calons', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nomor_urut')->nullable();
+            $table->string('foto_path')->nullable();
             $table->string('nama_pasangan_calon');
-            $table->json('nama_partai_id');
+            $table->json('nama_partai_id')->nullable();
+            $table->string('jenis_kelamin')->nullable();
+            $table->string('tempat_tinggal')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

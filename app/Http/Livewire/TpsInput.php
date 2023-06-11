@@ -21,6 +21,7 @@ class TpsInput extends Component
 
     public $paslons;
     public $kategori_pemilu_id;
+    public $data_dapil_id;
     public $result = [];
 
     // protected $rules = [
@@ -57,12 +58,22 @@ class TpsInput extends Component
 
     public function mount()
     {
-        $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','nama_partai_id','kategori_pemilu_id')->where('kategori_pemilu_id', $this->kategori_pemilu_id)->get();
+        $this->data_dapil_id = Auth::user()->data_dapil_id;
+        $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','nama_partai_id','kategori_pemilu_id', 'data_dapil_id')->where(
+            'kategori_pemilu_id', $this->kategori_pemilu_id
+            )->where(
+                'data_dapil_id', $this->data_dapil_id
+            )->get();
     }
 
     public function updated()
     {
-        $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','nama_partai_id','kategori_pemilu_id')->where('kategori_pemilu_id', $this->kategori_pemilu_id)->get();
+        $this->data_dapil_id = Auth::user()->data_dapil_id;
+        $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','nama_partai_id','kategori_pemilu_id', 'data_dapil_id')->where(
+            'kategori_pemilu_id', $this->kategori_pemilu_id
+            )->where(
+                'data_dapil_id', $this->data_dapil_id
+            )->get();
     }
 
     public function submitForm()
@@ -74,6 +85,7 @@ class TpsInput extends Component
             'user_id' => Auth::id(),
             'tps_id' => Auth::user()->tps_id,
             'kategori_pemilu_id' => $this->kategori_pemilu_id,
+            'data_dapil_id' => $this->data_dapil_id,
         ]);
 
         foreach ($this->result as $index => $result) {
@@ -81,6 +93,7 @@ class TpsInput extends Component
                 if ($index == $paslon->id) {
                     TpsResult::create([
                         'pasangan_calon_id' => $paslon->id,
+                        'data_dapil_id' => $paslon->data_dapil_id,
                         'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
                         'perolehan_suara' => $result['perolehan_suara'] ?? '0',
                         'tps_input_id' => $master->id,
