@@ -2,8 +2,8 @@
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
 
-            <div class="flex justify-between">
-                <div>
+            <div class="flex justify-between p-4">
+                <div class="grid grid-cols-3 gap-4">
                     <select wire:model="kategoriPemiluActive" id="kategori_pemilu_id" name="kategori_pemilu_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                         <option value="">Kategori PEMILU</option>
@@ -11,8 +11,48 @@
                         <option value="{{ $kp->id }}">{{ $kp->nama_kategori_pemilu }}</option>
                         @endforeach
                     </select>
-                </div>
-                <div>
+                    <select wire:model="kategoriDataActive" id="kategori_data" name="kategori_data"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="1">Perhitungan Suara</option>
+                        <option value="2">Rekapitulasi Hasil Pemilu</option>
+                    </select>
+                    <select wire:model="kategoriDaerahActive" id="kategori_data" name="kategori_data"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="1">Dapil</option>
+                        <option value="2">Wilayah</option>
+                    </select>
+                    <select wire:model="provinsiActive" id="provinsi" name="provinsi"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="">Pilih Provinsi</option>
+                        @foreach ($provinsis as $prov)
+                        <option value="{{ $prov->id }}">{{ $prov->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($this->provinsiActive == null)
+                    @elseif ($this->kategoriPemiluActive == 3)
+                    @else
+                    <select wire:model="kabKotaActive" id="kab-kota" name="kab-kota"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="">Pilih Kab/Kota</option>
+                        @foreach ($kabkotas as $kabkota)
+                        <option value="{{ $kabkota->id }}">{{ $kabkota->name }}</option>
+                        @endforeach
+                    </select>
+                    @endif
+                    @if ($this->provinsiActive == null)
+                    @elseif ($this->kategoriPemiluActive == 3)
+                    @elseif ($this->kategoriDaerahActive == 1)
+                    @elseif ($this->kabKotaActive == null)
+                    @else
+                    <select wire:model="kecamatanActive" id="kecamatan" name="kecamatan"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="">Pilih Kecamatan</option>
+                        @foreach ($kecamatans as $kec)
+                        <option value="{{ $kec->id }}">{{ $kec->name }}</option>
+                        @endforeach
+                    </select>
+                    @endif
+                    {{-- @if (!$this->kabKotaActive == null)
                     <select wire:model="dataDapilActive" id="data_dapil_active" name="data_dapil_active"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                         <option value="">DAPIL</option>
@@ -20,6 +60,7 @@
                         <option value="{{ $dapil->id }}">{{ $dapil->nama_dapil }}</option>
                         @endforeach
                     </select>
+                    @endif --}}
                 </div>
 
                 <button wire:click="reloadListDashboard" wire:loading.attr="disabled"
@@ -48,71 +89,6 @@
                 </button>
             </div>
 
-            <div class="grid grid-cols-3 w-full gap-4">
-
-                @forelse ($partais as $p)
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="border-b text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th colspan="2" class="px-6 py-3 text-center">
-                                    {{ $p->nama_partai }}
-                                </th>
-                            </tr>
-                        </thead>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Nama Paslon
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Perolehan Suara
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($allItems as $data)
-                                @if ($p->id == $data->nama_partai_id)
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td class="px-6 py-4">
-                                            {{ $data->nama_pasangan_calon }}
-                                        </td>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $data->total_suara ?? 0 }}
-                                        </th>
-                                    </tr>
-                            @endif
-                            @endforeach
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="px-6 py-4">
-                                    Total Perolehan Suara
-                                </td>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $data->total_suara ?? 0 }}
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                {{--  @foreach ($allItems as $test)
-                    @if ($p->id == $test->nama_partai_id)
-                            
-                    @endif
-                    @endforeach --}}
-                @empty
-                    
-                @endforelse
-
-                {{-- @foreach ($allItems as $user)
-                    <div>
-                        <p>{{ $user->nama_pasangan_calon }}</p>
-                        <p>{{ $user->total_suara ?? 0 }}</p>
-                    </div>
-                @endforeach --}}
-                
-            </div>
-
         </div>
     </div>
-    </div>
+</div>

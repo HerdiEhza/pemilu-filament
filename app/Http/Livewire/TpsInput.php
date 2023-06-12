@@ -78,7 +78,7 @@ class TpsInput extends Component
 
     public function submitForm()
     {
-        $paslonData = PasanganCalon::select('id','nama_pasangan_calon')->get();
+        $paslonData = PasanganCalon::select('id','nama_pasangan_calon', 'nama_partai_id', 'data_dapil_id')->get();
         $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $this->kategori_pemilu_id)->first();
 
         $master = ModelsTpsInput::create([
@@ -93,8 +93,10 @@ class TpsInput extends Component
                 if ($index == $paslon->id) {
                     TpsResult::create([
                         'pasangan_calon_id' => $paslon->id,
+                        'kategori_pemilu_id' => $this->kategori_pemilu_id,
                         'data_dapil_id' => $paslon->data_dapil_id,
                         'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
+                        'data_partai_id' => $paslon->nama_partai_id,
                         'perolehan_suara' => $result['perolehan_suara'] ?? '0',
                         'tps_input_id' => $master->id,
                         'is_active	' => true

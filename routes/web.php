@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/test', \App\Http\Livewire\TestFoto::class)->name('test');
 
     Route::get('/dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('dashboard');
+    Route::get('/new-dashboard', \App\Http\Livewire\MainDashboard::class)->name('new-dashboard');
     // Route::get('/input-suara', \App\Http\Livewire\InputDataSuara::class)->name('input-suara');
 
     // Route::get('data-tps/eja', \App\Http\Livewire\InputDataSuara\Input::class)->name('data-tps.eja');

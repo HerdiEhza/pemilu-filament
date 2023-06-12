@@ -17,13 +17,18 @@ return new class extends Migration
             $table->string('nama_pasangan_calon');
             $table->string('perolehan_suara')->default('0');
             $table->unsignedBigInteger('tps_input_id');
+            // $table->unsignedBigInteger('data_partai_id');
+            $table->json('data_partai_id');
             $table->boolean('is_active')->default(1);
             $table->unsignedBigInteger('data_dapil_id')->nullable();
+            $table->unsignedBigInteger('kategori_pemilu_id')->nullable();
             $table->timestamps();
 
             $table->foreign('pasangan_calon_id')->references('id')->on('pasangan_calons')->onDelete('cascade');
             $table->foreign('tps_input_id')->references('id')->on('tps_inputs')->onDelete('cascade');
-            $table->foreign('data_dapil_id', 'dapil_fk_8515445')->references('id')->on('data_dapils');
+            // $table->foreign('data_partai_id')->references('id')->on('data_partais')->onDelete('cascade');
+            $table->foreign('data_dapil_id', 'dapil_fk_897643')->references('data_dapil_id')->on('pasangan_calons');
+            $table->foreign('kategori_pemilu_id', 'dapil_fk_89896743')->references('id')->on('kategori_pemilus');
         });
     }
 

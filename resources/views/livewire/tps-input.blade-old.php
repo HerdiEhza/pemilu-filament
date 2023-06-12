@@ -178,3 +178,72 @@
         </div>
     </div>
 </div>
+
+
+
+
+{{-- @forelse ($paslons as $ps)
+                                <div
+                                    class="flex flex-col justify-between w-full h-full bg-white rounded shadow justify-self-start">
+                                    <div class="flex flex-col items-center w-full pt-4 space-y-4 bg-white">
+                                        <p class="text-xs font-light text-center text-gray-400">
+                                            {{ $ps->kategoriPemilu->nama_kategori_pemilu }}</p>
+                                <img class="rounded-full w-14 h-14"
+                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
+                                    alt="">
+                            </div>
+                            <div class="top-0 flex flex-col p-2">
+                                <h1 class="text-center text-gray-800">{{ $ps->nama_pasangan_calon }}</h1>
+                                <div class="flex items-center justify-center space-x-2">
+                                    @foreach ($partais as $p)
+                                    @if (is_array($ps->nama_partai_id))
+                                    @foreach ($ps->nama_partai_id as $np)
+                                    @if ($p->id == $np)
+                                    <img class="h-8" src="{{ asset('assets/logo-partai/'.$p->logo_partai) }}" alt="">
+                                    @endif
+                                    @endforeach
+                                    @else
+                                    @if ($p->id == $ps->nama_partai_id)
+                                    <img class="h-8" src="{{ asset('assets/logo-partai/'.$p->logo_partai) }}" alt="">
+                                    @endif
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="relative flex items-center justify-center p-2 mt-2">
+                                <input value="{{ $ps->id }}" type="hidden" name="pasangan_calon_id"
+                                    id="pasangan_calon_id"
+                                    class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                                <input value="{{ $ps->nama_pasangan_calon }}" type="hidden" name="nama_pasangan_calon"
+                                    id="nama_pasangan_calon"
+                                    class="text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                                <input wire:model.lazy="result.{{ $ps->id }}.perolehan_suara" type="number"
+                                    name="perolehan_suara" id="perolehan_suara"
+                                    class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        @empty
+                        <div
+                            class="relative w-full h-64 col-span-3 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8">
+                            <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+                                <div class="flex flex-col items-center text-center">
+                                    <div
+                                        class="flex items-center justify-center flex-shrink-0 w-20 h-20 mx-auto bg-red-100 rounded-full sm:mx-0">
+                                        <svg class="text-red-600 w-14 h-14" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                        </svg>
+                                    </div>
+                                    <div class="mt-6 text-center">
+                                        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">
+                                            Uppss...!</h3>
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-500">Maaf list Pasangan Calon tidak
+                                                dapat ditampilkan, harap hubungi Admin!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforelse
+                        </div> --}}

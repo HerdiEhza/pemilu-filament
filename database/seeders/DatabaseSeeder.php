@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'nomor_ktp' => '6118476830904',
             'nomor_hp' => '08967273567',
             'is_admin' => true,
-            'data_dapil_id' => 1
+            'data_dapil_id' => 63
         ]);
 
         \App\Models\User::factory()->create([
@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
             'nomor_ktp' => '6118478970904',
             'nomor_hp' => '08967265567',
             'is_admin' => false,
-            'data_dapil_id' => 1
+            'data_dapil_id' => 63
         ]);
 
         \App\Models\User::factory()->create([
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
             'nomor_ktp' => '6118478830963',
             'nomor_hp' => '08967235567',
             'is_admin' => false,
-            'data_dapil_id' => 2
+            'data_dapil_id' => 63
         ]);
     }
 }

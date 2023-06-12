@@ -10,11 +10,18 @@ class TpsResult extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'data_partai_id' => 'array',
+    ];
+
     protected $fillable = [
         'pasangan_calon_id',
         'nama_pasangan_calon',
         'perolehan_suara',
         'tps_input_id',
+        'kategori_pemilu_id',
+        'data_dapil_id',
+        'data_partai_id',
     ];
 
     public function dataInput() : BelongsTo
