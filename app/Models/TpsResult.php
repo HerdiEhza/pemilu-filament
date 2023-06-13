@@ -15,6 +15,7 @@ class TpsResult extends Model
     ];
 
     protected $fillable = [
+        'tps_id',
         'pasangan_calon_id',
         'nama_pasangan_calon',
         'perolehan_suara',
@@ -24,6 +25,10 @@ class TpsResult extends Model
         'data_partai_id',
     ];
 
+    public function tps() : BelongsTo
+    {
+        return $this->BelongsTo(DataTps::class);
+    }
     public function dataInput() : BelongsTo
     {
         return $this->BelongsTo(TpsInput::class);

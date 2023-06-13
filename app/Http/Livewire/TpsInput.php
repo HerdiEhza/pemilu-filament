@@ -92,6 +92,7 @@ class TpsInput extends Component
             foreach ($paslonData as $paslon) {
                 if ($index == $paslon->id) {
                     TpsResult::create([
+                        'tps_id' => Auth::user()->tps_id,
                         'pasangan_calon_id' => $paslon->id,
                         'kategori_pemilu_id' => $this->kategori_pemilu_id,
                         'data_dapil_id' => $paslon->data_dapil_id,

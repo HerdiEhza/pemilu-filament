@@ -14,9 +14,12 @@ use App\Models\IndonesiaVilages;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 
+use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Facades\DB;
+
 class MasterDashboard extends Component
 {
-    public $kategoriPemiluActive;
+    public $kategoriPemiluActive = 4;
     public $provinsiActive = 1;
     public $kabKotaActive;
     public $kecamatanActive;
@@ -76,6 +79,76 @@ class MasterDashboard extends Component
         $kelurahans = IndonesiaVilages::where('indonesia_districts_id', $this->kecamatanActive)->get();
         $tpsList = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
 
-        return view('livewire.dashboard.master-dashboard', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans', 'kelurahans', 'tpsList'));
+        $getPerolehanSuara = DB::table('tps_results')
+            ->select('data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+            ->groupBy('data_partai_id');
+
+        // $sizes = DB::table('tps_inputs')
+            // ->crossJoin('tps_results')
+        //     ->select('data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
+        //     ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+        //     ->groupBy('data_partai_id');
+            // ->get();
+
+        $orders = DB::table('tps_results')
+            ->select('tps_id', 'data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+            ->groupByRaw('tps_id, data_partai_id')
+            ->get();
+
+        // $getTps = DB::table('data_tps')
+        // ->joinSub($orders, 'perolehan_suara', function (JoinClause $join) {
+        //     $join->on('data_tps.id', '=', 'perolehan_suara.tps_id'); //karna group by partai bukan perorangan
+        // // })->select('id', 'perolehan_suara.total_suara')->get(); //karna group by partai bukan perorangan
+        // })->groupBy('tps_id');
+
+        // $setAllItems = collect($orders)->merge($getTps);
+
+        $getPartaiList = DB::table('data_partais')
+            ->joinSub($getPerolehanSuara, 'perolehan_suara', function (JoinClause $join) {
+                $join->on('data_partais.id', '=', 'perolehan_suara.data_partai_id'); //karna group by partai bukan perorangan
+            // })->select('id', 'perolehan_suara.total_suara')->get(); //karna group by partai bukan perorangan
+            })->get();
+
+
+        // $tps = DB::table('getPartaiList')
+        //     ->join('contacts', 'getPartaiList.id', '=', 'contacts.user_id')
+        //     ->join('orders', 'getPartaiList.id', '=', 'orders.user_id')
+        //     ->select('getPartaiList.*', 'contacts.phone', 'orders.price')
+        //     ->get();
+
+        // foreach ($getPartaiList as $rec){
+        //     $created_po[] = $rec->data_partai_id;
+        // }
+
+        $all = DB::table('pasangan_calons')
+            ->join('data_partais', 'pasangan_calons.nama_partai_id', '=', 'data_partais.id')
+            ->select('pasangan_calons.*', 'data_partais.nama_partai')
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)
+            // ->whereNotIn('pasangan_calons.id', $created_po)
+            ->groupByRaw('pasangan_calons.id, data_partais.nama_partai')
+            ->get();
+
+        // $setAllItems = collect($getPartaiList)->merge($all);
+        // $allItems = collect($setAllItems);
+
+        return view('livewire.dashboard.master-dashboard', compact(
+            'paslon',
+            'partais',
+            'kategoriPemilus',
+            'dapils',
+            'provinsis',
+            'kabkotas',
+            'kecamatans',
+            'kelurahans',
+            'tpsList',
+            'getPerolehanSuara',
+            'getPartaiList',
+            // 'allItems',
+            // 'getTps',
+            'orders',
+            // 'setAllItems'
+        ));
     }
 }
