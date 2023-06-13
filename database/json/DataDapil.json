@@ -3,48 +3,56 @@
         "id": 1,
         "nama_dapil": "KALIMANTAN BARAT 1",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 2,
         "nama_dapil": "KALIMANTAN BARAT 2",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 3,
         "nama_dapil": "KALIMANTAN BARAT 3",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 4,
         "nama_dapil": "KALIMANTAN BARAT 4",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 5,
         "nama_dapil": "KALIMANTAN BARAT 5",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 6,
         "nama_dapil": "KALIMANTAN BARAT 6",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 7,
         "nama_dapil": "KALIMANTAN BARAT 7",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {
         "id": 8,
         "nama_dapil": "KALIMANTAN BARAT 8",
         "province_id": 1,
+        "cities_id" : null,
         "kategori_pemilu_id": 3
     },
     {

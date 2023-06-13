@@ -46,5 +46,13 @@
         <x-notifications />
         <x-dialog z-index="z-50" blur="md" align="center" />
         @livewire('notifications')
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                window.livewire.on('urlChange', (url) => {
+                    history.pushState(null, null, url);
+                });
+            });
+        </script>
     </body>
 </html>

@@ -22,6 +22,7 @@ class DataDapilSeeder extends Seeder
                 'id' => $dapil['id'],
                 'nama_dapil' => $dapil['nama_dapil'],
                 'province_id' => $dapil['province_id'],
+                'cities_id' => $dapil['cities_id'],
                 'kategori_pemilu_id' => $dapil['kategori_pemilu_id'],
             ]);
         }
