@@ -18,8 +18,6 @@ use Illuminate\Support\Facades\DB;
 class DprdKabDashboard extends Component
 {
     public $kategoriPemiluActive;
-    // public $kategoriDataActive;
-    // public $kategoriDaerahActive;
     public $provinsiActive = 1;
     public $kabKotaActive;
     public $kecamatanActive;

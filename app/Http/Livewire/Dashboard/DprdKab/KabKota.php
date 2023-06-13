@@ -1,48 +1,34 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard;
+namespace App\Http\Livewire\Dashboard\DprdKab;
 
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 use App\Models\DataPartai;
 use App\Models\DataDapil;
+use App\Models\DataTps;
 use App\Models\IndonesiaCities;
 use App\Models\IndonesiaDistricts;
 use App\Models\IndonesiaProvinces;
+use App\Models\IndonesiaVilages;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 
-class KategoriPemiluDashboard extends Component
+class KabKota extends Component
 {
     public $kategoriPemiluActive;
-    public $kategoriDataActive;
-    public $kategoriDaerahActive;
-    public $provinsiActive;
-    public $dataDapilActive;
+    public $provinsiActive = 1;
     public $kabKotaActive;
     public $kecamatanActive;
-
-    protected $listeners = [
-        'updateListDashboard' => 'render'
-    ];
-
-    protected $queryString = [
-        'kategoriPemiluActive',
-        'kategoriDataActive' => ['except' => 1],
-        'kategoriDaerahActive'=> ['except'=>''],
-        'provinsiActive' => ['except'=>''],
-        'dataDapilActive' => ['except'=>''],
-        'kabKotaActive' => ['except'=>''],
-        'kecamatanActive' => ['except'=>''],
-    ];
-
-    function updated() : void {
-        $this->kategoriPemiluActive = $this->kategoriPemiluActive;
-    }
-
-    function reloadListDashboard()
+    public $kelurahanActive;
+    public $tpsActive;
+    public $dataDapilActive;
+    
+    function mount(Request $request)
     {
-        $this->emit('updateListDashboard');
+        $getUrl = explode('/',  $request->path());
+        $this->kabKotaActive = end($getUrl);
     }
 
     public function render()
@@ -55,7 +41,9 @@ class KategoriPemiluDashboard extends Component
         $provinsis = IndonesiaProvinces::all();
         $kabkotas = IndonesiaCities::where('indonesia_provinces_id', $this->provinsiActive)->get();
         $kecamatans = IndonesiaDistricts::where('indonesia_cities_id', $this->kabKotaActive)->get();
+        $kelurahans = IndonesiaVilages::where('indonesia_districts_id', $this->kecamatanActive)->get();
+        $tpsList = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
 
-        return view('livewire.dashboard.kategori-pemilu-dashboard', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans'));
+        return view('livewire.dashboard.dprd-kab.kab-kota', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans', 'kelurahans', 'tpsList'));
     }
 }

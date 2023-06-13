@@ -13,9 +13,9 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     {{-- @if (Auth::user()->is_admin == true) --}}
-                        {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
-                        </x-nav-link> --}}
+                        </x-nav-link>
                         <x-nav-link :href="route('input-suara')" :active="request()->routeIs('input-suara')">
                             {{ __('Input suara') }}
                         </x-nav-link>

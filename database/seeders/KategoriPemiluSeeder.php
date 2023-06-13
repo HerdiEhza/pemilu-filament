@@ -13,14 +13,14 @@ class KategoriPemiluSeeder extends Seeder
     public function run(): void
     {
         $kategoriPemilu = [
-            [
-                'id' => 1,
-                'nama_kategori_pemilu' => 'Pemilihan umum Presiden RI',
-            ],
-            [
-                'id' => 2,
-                'nama_kategori_pemilu' => 'Pemilihan umum Legislatif DPR RI',
-            ],
+            // [
+            //     'id' => 1,
+            //     'nama_kategori_pemilu' => 'Pemilihan umum Presiden RI',
+            // ],
+            // [
+            //     'id' => 2,
+            //     'nama_kategori_pemilu' => 'Pemilihan umum Legislatif DPR RI',
+            // ],
             [
                 'id' => 3,
                 'nama_kategori_pemilu' => 'Pemilihan umum Legislatif DPRD Provinsi',
@@ -29,10 +29,10 @@ class KategoriPemiluSeeder extends Seeder
                 'id' => 4,
                 'nama_kategori_pemilu' => 'Pemilihan umum Legislatif DPRD Kab/Kota',
             ],
-            [
-                'id' => 5,
-                'nama_kategori_pemilu' => 'Pemilihan umum DPD',
-            ],
+            // [
+            //     'id' => 5,
+            //     'nama_kategori_pemilu' => 'Pemilihan umum DPD',
+            // ],
         ];
 
         foreach ($kategoriPemilu as $kaPem) {

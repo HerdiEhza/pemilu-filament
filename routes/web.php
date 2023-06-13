@@ -34,7 +34,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/old-dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('old-dashboard');
     Route::get('/dashboard', \App\Http\Livewire\Dashboard\MasterDashboard::class)->name('dashboard');
-    // Route::get('/dashboard/{kategoriPemiluActive}', \App\Http\Livewire\Dashboard\KategoriPemiluDashboard::class)->name('dashboard.kategori-pemilu');
+    Route::get('/dashboard/{kab_kota}', \App\Http\Livewire\Dashboard\DprdKab\KabKota::class)->name('dashboard.per-kab_kota');
+    Route::get('/dashboard/{kab_kota}/{kec}', \App\Http\Livewire\Dashboard\DprdKab\Kec::class)->name('dashboard.per-kec');
+    Route::get('/dashboard/{kab_kota}/{kec}/{kel}', \App\Http\Livewire\Dashboard\DprdKab\Kel::class)->name('dashboard.per-kel');
+    // Route::get('/dashboard/{kab_kota}/', \App\Http\Livewire\Dashboard\DprdKab\KabKota::class)->name('dashboard.per-kab_kota');
+    
     // Route::get('/dashboard/{kategoriPemiluActive}/{kategoriDataActive}', \App\Http\Livewire\Dashboard\PilpresDashboard::class)->name('pilpres.dashboard');
     // Route::get('/dashboard/dpr', \App\Http\Livewire\Dashboard\DprDashboard::class)->name('dpr-dashboard');
     // Route::get('/dashboard/dprd-prov', \App\Http\Livewire\Dashboard\DprdProvDashboard::class)->name('dprd-prov.dashboard');
