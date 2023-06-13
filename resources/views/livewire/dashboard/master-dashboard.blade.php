@@ -2,7 +2,7 @@
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
 
-            <div class="flex justify-between p-4">
+            <div class="flex justify-between p-4 space-x-4">
                 <div class="grid grid-cols-3 gap-4">
                     <select wire:model="kategoriPemiluActive" id="kategori_pemilu_id" name="kategori_pemilu_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -23,7 +23,7 @@
                     </select> --}}
                     <select wire:model="provinsiActive" id="provinsi" name="provinsi"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                        <option value="">Pilih Provinsi</option>
+                        <option value="0">Semua Provinsi</option>
                         @foreach ($provinsis as $prov)
                         <option value="{{ $prov->id }}">{{ $prov->name }}</option>
                         @endforeach
@@ -33,7 +33,7 @@
                     @else
                     <select wire:model="kabKotaActive" id="kab-kota" name="kab-kota"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                        <option value="">Pilih Kab/Kota</option>
+                        <option value="0">Semua Kab/Kota</option>
                         @foreach ($kabkotas as $kabkota)
                         <option value="{{ $kabkota->id }}">{{ $kabkota->name }}</option>
                         @endforeach
@@ -46,9 +46,35 @@
                     @else
                     <select wire:model="kecamatanActive" id="kecamatan" name="kecamatan"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                        <option value="">Pilih Kecamatan</option>
+                        <option value="">Semua Kecamatan</option>
                         @foreach ($kecamatans as $kec)
                         <option value="{{ $kec->id }}">{{ $kec->name }}</option>
+                        @endforeach
+                    </select>
+                    @endif
+                    @if ($this->provinsiActive == null)
+                    @elseif ($this->kategoriPemiluActive == 3)
+                    @elseif ($this->kabKotaActive == null)
+                    @elseif ($this->kecamatanActive == null)
+                    @else
+                    <select wire:model="kelurahanActive" id="kelurahan" name="kelurahan"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="">Semua Kelurahan</option>
+                        @foreach ($kelurahans as $kel)
+                        <option value="{{ $kel->id }}">{{ $kel->name }}</option>
+                        @endforeach
+                    </select>
+                    @endif
+                    @if ($this->provinsiActive == null)
+                    @elseif ($this->kategoriPemiluActive == 3)
+                    @elseif ($this->kabKotaActive == null)
+                    @elseif ($this->kecamatanActive == null)
+                    @else
+                    <select wire:model="tpsActive" id="tps" name="tps"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="">Semua Tps</option>
+                        @foreach ($tpsList as $tps)
+                        <option value="{{ $tps->id }}">{{ $tps->nama_tps }}</option>
                         @endforeach
                     </select>
                     @endif
@@ -118,7 +144,8 @@
                     ], key('dprd-prov-'.$this->kategoriPemiluActive))
             @endif
             @if ($this->kategoriPemiluActive == 4)
-                @livewire('dashboard.dprd-kab.provinsi-dashboard', [
+                {{-- @livewire('dashboard.dprd-kab.provinsi-dashboard', [ --}}
+                    @livewire('dashboard.dprd-kab-dashboard', [
                     'kategoriPemiluActive' => $this->kategoriPemiluActive,
                     'provinsiActive' => $this->provinsiActive,
                     'dataDapilActive' => $this->dataDapilActive,

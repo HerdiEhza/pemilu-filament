@@ -6,9 +6,11 @@ use Livewire\Component;
 
 use App\Models\DataPartai;
 use App\Models\DataDapil;
+use App\Models\DataTps;
 use App\Models\IndonesiaCities;
 use App\Models\IndonesiaDistricts;
 use App\Models\IndonesiaProvinces;
+use App\Models\IndonesiaVilages;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 
@@ -17,11 +19,12 @@ class MasterDashboard extends Component
     public $kategoriPemiluActive;
     // public $kategoriDataActive;
     // public $kategoriDaerahActive = 1;
-    public $provinsiActive;
-    public $dataDapilActive;
-    public $kabKotaActive;
-    public $kecamatanActive;
+    public $provinsiActive = 1;
+    public $kabKotaActive = 0;
+    public $kecamatanActive = 0;
+    public $kelurahanActive = 0;
     public $tpsActive;
+    public $dataDapilActive;
 
     protected $listeners = [
         'updateListDashboard' => 'render'
@@ -66,7 +69,9 @@ class MasterDashboard extends Component
         $provinsis = IndonesiaProvinces::all();
         $kabkotas = IndonesiaCities::where('indonesia_provinces_id', $this->provinsiActive)->get();
         $kecamatans = IndonesiaDistricts::where('indonesia_cities_id', $this->kabKotaActive)->get();
+        $kelurahans = IndonesiaVilages::where('indonesia_districts_id', $this->kecamatanActive)->get();
+        $tpsList = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
 
-        return view('livewire.dashboard.master-dashboard', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans'));
+        return view('livewire.dashboard.master-dashboard', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans', 'kelurahans', 'tpsList'));
     }
 }

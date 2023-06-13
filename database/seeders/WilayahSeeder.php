@@ -18,14 +18,14 @@ class WilayahSeeder extends Seeder
                 'id'             => 1,
                 'name'  => 'Kalimantan Barat',
             ],
-            [
-                'id'             => 2,
-                'name'  => 'Kalimantan Selatan',
-            ],
-            [
-                'id'             => 3,
-                'name'  => 'Kalimantan Timur',
-            ],
+            // [
+            //     'id'             => 2,
+            //     'name'  => 'Kalimantan Selatan',
+            // ],
+            // [
+            //     'id'             => 3,
+            //     'name'  => 'Kalimantan Timur',
+            // ],
         ];
 
         foreach ($provinsis as $provinsi)

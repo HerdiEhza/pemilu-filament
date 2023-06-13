@@ -6,6 +6,9 @@ use Livewire\Component;
 
 use App\Models\DataPartai;
 use App\Models\DataDapil;
+use App\Models\IndonesiaCities;
+use App\Models\IndonesiaDistricts;
+use App\Models\IndonesiaProvinces;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 
@@ -17,15 +20,34 @@ class DprdKabDashboard extends Component
     public $kategoriPemiluActive;
     // public $kategoriDataActive;
     // public $kategoriDaerahActive;
-    public $provinsiActive;
-    public $dataDapilActive;
+    public $provinsiActive = 1;
     public $kabKotaActive;
     public $kecamatanActive;
     public $tpsActive;
+    public $dataDapilActive;
+
+    public $kabKota;
+    public $kecamatan;
+    
+    function mount()
+    {
+        if($this->kabKotaActive == 0)
+        {
+            $this->kabKota = IndonesiaCities::all();
+        }
+    }
 
     function updated()
     {
         $this->dataDapilActive = DB::table('data_dapils')->where('cities_id', $this->kabKotaActive)->first();
+        
+        if($this->kabKotaActive == 0)
+        {
+            $this->kabKota = IndonesiaCities::all();
+        } elseif(!$this->kabKotaActive == 0) {
+            $kecamatan = IndonesiaDistricts::where('indonesia_cities_id', $this->kabKotaActive)->get();
+            $this->kecamatan = $kecamatan;
+        }
     }
     public function render()
     {
@@ -58,6 +80,8 @@ class DprdKabDashboard extends Component
 
         $setAllItems = collect($users)->merge($all);
         $allItems = collect($setAllItems);
+
+        
 
         return view('livewire.dashboard.dprd-kab-dashboard', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'users', 'all', 'allItems'));
     }
