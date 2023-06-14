@@ -8,7 +8,12 @@
 
                 {{-- {{ $s->nama_pasangan_calon }} --}}
 
-            {{ dd($getPerolehanSuara) }}
+            {{-- {{ dd($orders) }} --}}
+            {{-- @foreach ($orders as $post)
+                @foreach ($post->hasilSuara as $comment)
+                    {{ $comment}}
+                @endforeach
+            @endforeach --}}
 
             <div class="relative p-4 overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -38,11 +43,11 @@
                                     </a>
                                 </th>
                                 @foreach ($partais as $partai)
-                                    @foreach ($orders as $s)
-                                    @if ($partai->id == $s->data_partai_id)
+                                    @foreach ($hasil as $s)
+                                    @if ($s->data_partai_id == $partai->id and $s->tps_kab_id == $kk->id)
                                         <th class="px-6 py-3">
                                             <a href="">
-                                                {{ $s->total_suara }}
+                                                {{ $s->total_suara ?? '0' }}
                                             </a>
                                         </th>
                                     @endif

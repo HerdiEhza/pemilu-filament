@@ -15,9 +15,11 @@ use App\Models\IndonesiaVilages;
 use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 
+use Illuminate\Support\Facades\DB;
+
 class KabKota extends Component
 {
-    public $kategoriPemiluActive;
+    public $kategoriPemiluActive = 4;
     public $provinsiActive = 1;
     public $kabKotaActive;
     public $kecamatanActive;
@@ -27,23 +29,32 @@ class KabKota extends Component
     
     function mount(Request $request)
     {
+        $this->kategoriPemiluActive = $this->kategoriPemiluActive;
+
         $getUrl = explode('/',  $request->path());
         $this->kabKotaActive = end($getUrl);
     }
 
+    function updated() : void {
+        $this->kategoriPemiluActive = $this->kategoriPemiluActive;
+    }
+
     public function render()
     {
-        $kategoriPemilus = KategoriPemilu::all();
-        $dapils = DataDapil::where('kategori_pemilu_id', $this->kategoriPemiluActive)->get();
-        $paslon = PasanganCalon::where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)->withSum('perolehanSuara as total_suara', 'perolehan_suara')->get();
         $partais = DataPartai::all();
-
-        $provinsis = IndonesiaProvinces::all();
-        $kabkotas = IndonesiaCities::where('indonesia_provinces_id', $this->provinsiActive)->get();
         $kecamatans = IndonesiaDistricts::where('indonesia_cities_id', $this->kabKotaActive)->get();
-        $kelurahans = IndonesiaVilages::where('indonesia_districts_id', $this->kecamatanActive)->get();
-        $tpsList = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
 
-        return view('livewire.dashboard.dprd-kab.kab-kota', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans', 'kelurahans', 'tpsList'));
+        $hasil = DB::table('tps_results')
+            ->select('tps_kec_id', 'data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+            ->groupByRaw('tps_kec_id, data_partai_id')
+            // ->groupByRaw('tps_id', data_partai_id, tps_provinsi_id, tps_kab_id, tps_kec_id, tps_kel_id')
+            ->get();
+
+        return view('livewire.dashboard.dprd-kab.kab-kota', compact(
+            'partais',
+            'kecamatans',
+            'hasil',
+        ));
     }
 }

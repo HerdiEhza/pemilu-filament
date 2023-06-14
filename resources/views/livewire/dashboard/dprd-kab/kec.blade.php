@@ -30,15 +30,19 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{-- <a href="{{ route('dashboard.per-kab_kota', preg_replace('/[^A-Za-z0-9-]+/', '-', $kk->name)) }}"> --}}
                                     <a href="{{ route('dashboard.per-kel', ['kab_kota' => $this->kabKotaActive, 'kec' => $this->kecamatanActive, 'kel' => $kk->id]) }}">
-                                        {{ $kk->name }}
+                                        {{ $kk->name }} {{ $kk->id }}
                                     </a>
                                 </th>
                                 @foreach ($partais as $partai)
-                                    <th class="px-6 py-3">
-                                        <a href="">
-                                            {{ $partai->id }}
-                                        </a>
-                                    </th>
+                                    @foreach ($hasil as $s)
+                                    @if ($s->data_partai_id == $partai->id and $s->tps_kel_id == $kk->id)
+                                        <th class="px-6 py-3">
+                                            <a href="">
+                                                {{ $s->total_suara ?? '0' }}
+                                            </a>
+                                        </th>
+                                    @endif
+                                    @endforeach
                                 @endforeach
                             </tr>
                         @endforeach

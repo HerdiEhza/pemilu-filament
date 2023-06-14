@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('tps_results', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tps_id');
+            $table->unsignedBigInteger('tps_provinsi_id');
+            $table->unsignedBigInteger('tps_kab_id');
+            $table->unsignedBigInteger('tps_kec_id');
+            $table->unsignedBigInteger('tps_kel_id');
             $table->unsignedBigInteger('pasangan_calon_id');
             $table->string('nama_pasangan_calon');
             $table->string('perolehan_suara')->default('0');
@@ -26,6 +30,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('tps_id')->references('id')->on('data_tps')->onDelete('cascade');
+            $table->foreign('tps_provinsi_id')->references('id')->on('indonesia_provinces')->onDelete('cascade');
+            $table->foreign('tps_kab_id')->references('id')->on('indonesia_cities')->onDelete('cascade');
+            $table->foreign('tps_kec_id')->references('id')->on('indonesia_districts')->onDelete('cascade');
+            $table->foreign('tps_kel_id')->references('id')->on('indonesia_villages')->onDelete('cascade');
             $table->foreign('pasangan_calon_id')->references('id')->on('pasangan_calons')->onDelete('cascade');
             $table->foreign('tps_input_id')->references('id')->on('tps_inputs')->onDelete('cascade');
             // $table->foreign('data_partai_id')->references('id')->on('data_partais')->onDelete('cascade');

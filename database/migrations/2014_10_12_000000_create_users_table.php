@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('locale')->nullable();
             $table->string('akun_google')->nullable();
             $table->longText('alamat')->nullable();
-            $table->string('nomor_hp')->nullable()->unique();
-            $table->string('nomor_ktp')->nullable()->unique();
+            $table->string('nomor_hp')->nullable();
+            $table->string('nomor_ktp')->nullable();
             $table->unsignedBigInteger('tps_id')->nullable();
             $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->boolean('is_admin')->default(0);

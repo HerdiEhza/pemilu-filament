@@ -57,4 +57,9 @@ class DataTps extends Model
     {
         return $this->belongsTo(IndonesiaVilages::class);
     }
+
+    public function hasilSuara() : HasMany
+    {
+        return $this->HasMany(TpsResult::class, 'tps_id');
+    }
 }

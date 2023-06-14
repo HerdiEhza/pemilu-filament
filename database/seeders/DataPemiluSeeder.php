@@ -79,29 +79,38 @@ class DataPemiluSeeder extends Seeder
             \App\Models\DataPartai::create($data);
         }
 
-        $dataTps = [
-            [
-                'id' => 1,
-                'nama_tps' => 'TPS 01',
-                'provinsi_id' => 1,
-                'kabupaten_kota_id' => 2,
-                'kecamatan_id' => 3,
-                'kelurahan_desa_id' => 4,
-                'data_dapil_id' => 4,
-            ],
-            [
-                'id' => 2,
-                'nama_tps' => 'TPS 02',
-                'provinsi_id' => 1,
-                'kabupaten_kota_id' => 5,
-                'kecamatan_id' => 4,
-                'kelurahan_desa_id' => 7,
-                'data_dapil_id' => 7,
-            ],
-        ];
+        // $dataTps = [
+        //     [
+        //         'id' => 1,
+        //         'nama_tps' => 'TPS 01',
+        //         'provinsi_id' => 1,
+        //         'kabupaten_kota_id' => 5,
+        //         'kecamatan_id' => 73,
+        //         'kelurahan_desa_id' => 777,
+        //         'data_dapil_id' => 7,
+        //     ],
+        //     [
+        //         'id' => 2,
+        //         'nama_tps' => 'TPS 02',
+        //         'provinsi_id' => 1,
+        //         'kabupaten_kota_id' => 5,
+        //         'kecamatan_id' => 73,
+        //         'kelurahan_desa_id' => 777,
+        //         'data_dapil_id' => 7,
+        //     ],
+        //     [
+        //         'id' => 3,
+        //         'nama_tps' => 'TPS 03',
+        //         'provinsi_id' => 1,
+        //         'kabupaten_kota_id' => 5,
+        //         'kecamatan_id' => 73,
+        //         'kelurahan_desa_id' => 777,
+        //         'data_dapil_id' => 7,
+        //     ],
+        // ];
 
-        foreach ($dataTps as $dt) {
-            \App\Models\DataTps::create($dt);
-        }
+        // foreach ($dataTps as $dt) {
+        //     \App\Models\DataTps::create($dt);
+        // }
     }
 }

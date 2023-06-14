@@ -16,6 +16,10 @@ class TpsResult extends Model
 
     protected $fillable = [
         'tps_id',
+        'tps_provinsi_id',
+        'tps_kab_id',
+        'tps_kec_id',
+        'tps_kel_id',
         'pasangan_calon_id',
         'nama_pasangan_calon',
         'perolehan_suara',

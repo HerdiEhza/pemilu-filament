@@ -93,6 +93,10 @@ class TpsInput extends Component
                 if ($index == $paslon->id) {
                     TpsResult::create([
                         'tps_id' => Auth::user()->tps_id,
+                        'tps_provinsi_id' => Auth::user()->tps->provinsi_id,
+                        'tps_kab_id' => Auth::user()->tps->kabupaten_kota_id,
+                        'tps_kec_id' => Auth::user()->tps->kecamatan_id,
+                        'tps_kel_id' => Auth::user()->tps->kelurahan_desa_id,
                         'pasangan_calon_id' => $paslon->id,
                         'kategori_pemilu_id' => $this->kategori_pemilu_id,
                         'data_dapil_id' => $paslon->data_dapil_id,
