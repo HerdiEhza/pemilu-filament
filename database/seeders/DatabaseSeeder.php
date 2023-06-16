@@ -32,12 +32,13 @@ class DatabaseSeeder extends Seeder
             KategoriPemiluSeeder::class,
             DataDapilSeeder::class,
             DataPemiluSeeder::class,
+            DataTpsSeeder::class,
             PaslonDprdProvinsiSeeder::class,
             PaslonDprdKabKotaSeeder::class,
+            UserTps::class,
+            DataTpsInputsSeeder::class,
+            DataTpsResultsSeeder::class,
         ]);
-
-        \App\Models\DataTps::factory(16499)->create();
-        \App\Models\User::factory(16499)->create();
 
         \App\Models\User::create([
             'name' => 'Herdi',
@@ -71,40 +72,5 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
             'data_dapil_id' => 63
         ]);
-
-        $users = \App\Models\User::all();
-        
-        foreach($users as $user)
-        {
-              
-        }
-        $master = ModelsTpsInput::create([
-            'user_id' => Auth::id(),
-            'tps_id' => Auth::user()->tps_id,
-            'kategori_pemilu_id' => $this->kategori_pemilu_id,
-            'data_dapil_id' => $this->data_dapil_id,
-        ]);
-
-        foreach ($this->result as $index => $result) {
-            foreach ($paslonData as $paslon) {
-                if ($index == $paslon->id) {
-                    TpsResult::create([
-                        'tps_id' => Auth::user()->tps_id,
-                        'tps_provinsi_id' => Auth::user()->tps->provinsi_id,
-                        'tps_kab_id' => Auth::user()->tps->kabupaten_kota_id,
-                        'tps_kec_id' => Auth::user()->tps->kecamatan_id,
-                        'tps_kel_id' => Auth::user()->tps->kelurahan_desa_id,
-                        'pasangan_calon_id' => $paslon->id,
-                        'kategori_pemilu_id' => $this->kategori_pemilu_id,
-                        'data_dapil_id' => $paslon->data_dapil_id,
-                        'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
-                        'data_partai_id' => $paslon->nama_partai_id,
-                        'perolehan_suara' => $result['perolehan_suara'] ?? '0',
-                        'tps_input_id' => $master->id,
-                        'is_active	' => true
-                    ]);
-                }
-            }
-        };
     }
 }

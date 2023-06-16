@@ -12,7 +12,7 @@ class CreateDataTpsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_tps')->nullable();
 
-            $table->unsignedBigInteger('data_dapil_id');
+            $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->foreign('data_dapil_id')->references('id')->on('data_dapils')->onDelete('cascade');
 
             $table->timestamps();

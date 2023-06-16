@@ -1,0 +1,23 @@
+[
+    {
+        "user_id": 1,
+        "tps_id": 1,
+        "kategori_pemilu_id": 4,
+        "is_active": 1,
+        "data_dapil_id": 63
+    },
+    {
+        "user_id": 2,
+        "tps_id": 2,
+        "kategori_pemilu_id": 4,
+        "is_active": 1,
+        "data_dapil_id": 63
+    },
+    {
+        "user_id": 3,
+        "tps_id": 3,
+        "kategori_pemilu_id": 4,
+        "is_active": 1,
+        "data_dapil_id": 63
+    }
+]
