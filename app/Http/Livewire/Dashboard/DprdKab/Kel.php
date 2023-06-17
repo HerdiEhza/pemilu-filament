@@ -6,18 +6,14 @@ use Illuminate\Http\Request;
 use Livewire\Component;
 
 use App\Models\DataPartai;
-use App\Models\DataDapil;
 use App\Models\DataTps;
-use App\Models\IndonesiaCities;
-use App\Models\IndonesiaDistricts;
-use App\Models\IndonesiaProvinces;
 use App\Models\IndonesiaVilages;
-use App\Models\KategoriPemilu;
-use App\Models\PasanganCalon;
+
+use Illuminate\Support\Facades\DB;
 
 class Kel extends Component
 {
-    public $kategoriPemiluActive;
+    public $kategoriPemiluActive = 4;
     public $provinsiActive = 1;
     public $kabKotaActive;
     public $kecamatanActive;
@@ -27,6 +23,8 @@ class Kel extends Component
     
     function mount(Request $request)
     {
+        $this->kategoriPemiluActive = $this->kategoriPemiluActive;
+
         $getUrl = explode('/',  $request->path());
         // dd($getUrl);
         $this->kabKotaActive = $getUrl[1];
@@ -36,17 +34,21 @@ class Kel extends Component
 
     public function render()
     {
-        $kategoriPemilus = KategoriPemilu::all();
-        $dapils = DataDapil::where('kategori_pemilu_id', $this->kategoriPemiluActive)->get();
-        $paslon = PasanganCalon::where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)->withSum('perolehanSuara as total_suara', 'perolehan_suara')->get();
         $partais = DataPartai::all();
+        $tps = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
 
-        $provinsis = IndonesiaProvinces::all();
-        $kabkotas = IndonesiaCities::where('indonesia_provinces_id', $this->provinsiActive)->get();
-        $kecamatans = IndonesiaDistricts::where('indonesia_cities_id', $this->kabKotaActive)->get();
-        $kelurahans = IndonesiaVilages::where('indonesia_districts_id', $this->kecamatanActive)->get();
-        $tpsList = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
+        $hasil = DB::table('tps_results')
+            ->select('tps_id', 'data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+            // ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)->where('tps_id', $this->kelurahanActive)
+            ->groupByRaw('tps_id, data_partai_id')
+            // ->groupByRaw('tps_id', data_partai_id, tps_provinsi_id, tps_kab_id, tps_kec_id, tps_kel_id')
+            ->get();
 
-        return view('livewire.dashboard.dprd-kab.kel', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'provinsis', 'kabkotas', 'kecamatans', 'kelurahans', 'tpsList'));
+        return view('livewire.dashboard.dprd-kab.kel', compact(
+            'partais',
+            'tps',
+            'hasil'
+        ));
     }
 }

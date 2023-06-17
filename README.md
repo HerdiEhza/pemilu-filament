@@ -7,4 +7,7 @@ Pr yang harus dikerjakan:
 
 -- unique di user email google dan no hp dimatikan !
 
+
+di DPRD nama berdasarkan kategori nya, untuk data yang ditampilkan +1 step
+
 [excel to json buat seeder](https://codebeautify.org/excel-to-json)

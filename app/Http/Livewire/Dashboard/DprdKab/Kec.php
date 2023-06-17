@@ -44,7 +44,8 @@ class Kec extends Component
 
         $hasil = DB::table('tps_results')
             ->select('tps_kel_id', 'data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
-            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)->where('tps_kel_id', $this->kelurahanActive)
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+            // ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)->where('tps_kel_id', $this->kelurahanActive)
             ->groupByRaw('tps_kel_id, data_partai_id')
             // ->groupByRaw('tps_id', data_partai_id, tps_provinsi_id, tps_kab_id, tps_kec_id, tps_kel_id')
             ->get();

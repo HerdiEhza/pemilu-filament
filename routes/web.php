@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/{kab_kota}', \App\Http\Livewire\Dashboard\DprdKab\KabKota::class)->name('dashboard.per-kab_kota');
     Route::get('/dashboard/{kab_kota}/{kec}', \App\Http\Livewire\Dashboard\DprdKab\Kec::class)->name('dashboard.per-kec');
     Route::get('/dashboard/{kab_kota}/{kec}/{kel}', \App\Http\Livewire\Dashboard\DprdKab\Kel::class)->name('dashboard.per-kel');
+    Route::get('/dashboard/{kab_kota}/{kec}/{kel}/{tps}', \App\Http\Livewire\Dashboard\DprdKab\Tps::class)->name('dashboard.per-tps');
     // Route::get('/dashboard/{kab_kota}/', \App\Http\Livewire\Dashboard\DprdKab\KabKota::class)->name('dashboard.per-kab_kota');
     
     // Route::get('/dashboard/{kategoriPemiluActive}/{kategoriDataActive}', \App\Http\Livewire\Dashboard\PilpresDashboard::class)->name('pilpres.dashboard');
