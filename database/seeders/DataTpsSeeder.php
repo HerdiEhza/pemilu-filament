@@ -21,6 +21,7 @@ class DataTpsSeeder extends Seeder
         foreach ($tps as $data) {
             DataTps::query()->updateOrCreate([
                 "nama_tps" => $data['nama_tps'],
+                "jumlah_dpt" => $data['jumlah_dpt'],
                 "provinsi_id" => $data['provinsi_id'],
                 "kabupaten_kota_id" => $data['kabupaten_kota_id'],
                 "kecamatan_id" => $data['kecamatan_id'],

@@ -23,6 +23,8 @@ class DataTpsInputsSeeder extends Seeder
             TpsInput::query()->updateOrCreate([
                 "user_id" => $data['user_id'],
                 "tps_id" => $data['tps_id'],
+                "jumlah_suara_sah" => $data['jumlah_suara_sah'],
+                "jumlah_suara_tidak_sah" => $data['jumlah_suara_tidak_sah'],
                 "kategori_pemilu_id" => $data['kategori_pemilu_id'],
                 "is_active" => $data['is_active'],
                 "data_dapil_id" => $data['data_dapil_id'],

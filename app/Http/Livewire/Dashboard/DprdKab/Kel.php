@@ -20,7 +20,7 @@ class Kel extends Component
     public $kelurahanActive;
     public $tpsActive;
     public $dataDapilActive;
-    
+
     function mount(Request $request)
     {
         $this->kategoriPemiluActive = $this->kategoriPemiluActive;
@@ -35,7 +35,7 @@ class Kel extends Component
     public function render()
     {
         $partais = DataPartai::all();
-        $tps = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
+        $dataTps = DataTps::where('kelurahan_desa_id', $this->kelurahanActive)->get();
 
         $hasil = DB::table('tps_results')
             ->select('tps_id', 'data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara'))
@@ -47,7 +47,7 @@ class Kel extends Component
 
         return view('livewire.dashboard.dprd-kab.kel', compact(
             'partais',
-            'tps',
+            'dataTps',
             'hasil'
         ));
     }

@@ -27,6 +27,7 @@ class DataTps extends Model
 
     protected $fillable = [
         'nama_tps',
+        'jumlah_dpt',
         'provinsi_id',
         'kabupaten_kota_id',
         'kecamatan_id',

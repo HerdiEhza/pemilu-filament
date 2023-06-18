@@ -16,6 +16,8 @@ class TpsInput extends Model
         'tps_id',
         'kategori_pemilu_id',
         'is_active',
+        'jumlah_suara_sah',
+        'jumlah_suara_tidak_sah',
     ];
 
     public function hasil() : HasMany

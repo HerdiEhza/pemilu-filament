@@ -5,7 +5,7 @@
             <div class="relative p-4 overflow-x-auto shadow-md sm:rounded-lg">
 
                 <h1>DATA PEMILIH DAN PENGGUNAAN HAK PILIH</h1>
-    
+
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -20,18 +20,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($tps as $kk)
+                        @foreach ($dataTps as $tps)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{-- <a href="{{ route('dashboard.per-kab_kota', preg_replace('/[^A-Za-z0-9-]+/', '-', $kk->name)) }}"> --}}
-                                    <a href="{{ route('dashboard.per-tps', ['kab_kota' => $this->kabKotaActive, 'kec' => $this->kecamatanActive, 'kel' => $kk->id]) }}">
-                                        {{ $kk->nama_tps }}
+                                    {{-- <a href="{{ route('dashboard.per-kab_kota', preg_replace('/[^A-Za-z0-9-]+/', '-', $tps->name)) }}"> --}}
+                                    <a href="{{ route('dashboard.per-tps', ['kab_kota' => $this->kabKotaActive, 'kec' => $this->kecamatanActive, 'kel' => $this->kelurahanActive, 'tps' => $tps->id]) }}">
+                                        {{ $tps->nama_tps }}
                                     </a>
                                 </th>
                                 @foreach ($partais as $partai)
                                     @foreach ($hasil as $s)
-                                    @if ($s->data_partai_id == $partai->id and $s->tps_id == $kk->id)
+                                    @if ($s->data_partai_id == $partai->id and $s->tps_id == $tps->id)
                                         <th class="px-6 py-3">
                                             <a href="">
                                                 {{ $s->total_suara ?? '0' }}
@@ -44,7 +44,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                
+
             </div>
 
         </div>

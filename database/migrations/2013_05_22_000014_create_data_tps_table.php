@@ -11,6 +11,8 @@ class CreateDataTpsTable extends Migration
         Schema::create('data_tps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_tps')->nullable();
+            $table->string('jumlah_dpt')->nullable();
+
 
             $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->foreign('data_dapil_id')->references('id')->on('data_dapils')->onDelete('cascade');

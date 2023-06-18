@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('tps_id');
             $table->string('kategori_pemilu_id');
+            $table->string('jumlah_suara_sah')->nullable();
+            $table->string('jumlah_suara_tidak_sah')->nullable();
             $table->boolean('is_active')->default(1);
             $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->timestamps();
