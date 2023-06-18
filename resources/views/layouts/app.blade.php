@@ -43,6 +43,10 @@
         </div>
 
         @livewireScripts()
+
+        @livewireChartsScripts
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
         <x-notifications />
         <x-dialog z-index="z-50" blur="md" align="center" />
         @livewire('notifications')
