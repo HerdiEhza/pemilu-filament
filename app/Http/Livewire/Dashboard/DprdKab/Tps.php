@@ -9,6 +9,7 @@ use App\Models\DataPartai;
 use App\Models\DataTps;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class Tps extends Component
 {
@@ -19,10 +20,20 @@ class Tps extends Component
     public $kelurahanActive;
     public $tpsActive;
     public $dataDapilActive;
+    public $previous;
+    public $back;
+
+    function back()
+    {
+        $this->previous = URL::previous();
+
+        return redirect($this->previous);
+    }
 
     function mount(Request $request)
     {
         $this->kategoriPemiluActive = $this->kategoriPemiluActive;
+        $this->previous = URL::previous();
 
         $getUrl = explode('/',  $request->path());
         // dd($getUrl);

@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/old-dashboard', \App\Http\Livewire\DashboardPerolehanSuara::class)->name('old-dashboard');
     Route::get('/dashboard/dapil', \App\Http\Livewire\Dashboard\DprdKab\PerDapil\Master::class)->name('dashboard');
     Route::get('/dashboard/dapil/{dapil}', \App\Http\Livewire\Dashboard\DprdKab\PerDapil\Dapil::class)->name('dashboard.per-dapil');
+    Route::get('/dashboard/dapil/{dapil}/{partai}/{paslon}', \App\Http\Livewire\Dashboard\DprdKab\PerDapil\Paslon::class)->name('dashboard.per-dapil-paslon');
 
     Route::get('/dashboard/wilayah/', \App\Http\Livewire\Dashboard\DprdKab\PerWilayah\Master::class)->name('dashboard.per-wilayah');
     Route::get('/dashboard/wilayah/{prov}', \App\Http\Livewire\Dashboard\DprdKab\PerWilayah\Prov::class)->name('dashboard.per-prov');
