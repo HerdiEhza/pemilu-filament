@@ -17,7 +17,7 @@
                         {{ $data->kategoriPemilu->nama_kategori_pemilu }}
                         <br>
                         @foreach ($partais as $p)
-                            @foreach ($data->nama_partai_id as $np)
+                            @foreach ($data->data_partai_id as $np)
                                 @if ($p->id == $np)
                                     {{ $p->nama_partai }}
                                 @endif

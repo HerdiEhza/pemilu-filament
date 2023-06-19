@@ -251,7 +251,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($paslons as $ps)
-                                        @if ($ps->nama_partai_id == $p->id)
+                                        @if ($ps->data_partai_id == $p->id)
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                 <td class="px-6 py-4">
                                                     {{ $ps->nama_pasangan_calon }}

@@ -98,14 +98,14 @@
                                     <div class="flex flex-col items-center p-2">
                                         <h1 class="text-center text-gray-800">{{ $ps->nama_pasangan_calon }}</h1>
                                         @foreach ($partais as $p)
-                                            @if (is_array($ps->nama_partai_id))
-                                                @foreach ($ps->nama_partai_id as $np)
+                                            @if (is_array($ps->data_partai_id))
+                                                @foreach ($ps->data_partai_id as $np)
                                                     @if ($p->id == $np)
                                                         <p class="text-xs font-light text-center text-gray-400">{{ $p->nama_partai }}</p>
                                                     @endif
                                                 @endforeach
                                             @else
-                                                @if ($p->id == $ps->nama_partai_id)
+                                                @if ($p->id == $ps->data_partai_id)
                                                     <p class="text-xs font-light text-center text-gray-400">{{ $p->nama_partai }}</p>
                                                 @endif
                                             @endif
@@ -128,14 +128,14 @@
                                     <div>
                                         {{ $ps->nama_pasangan_calon }}
                                         @foreach ($partais as $p)
-                                            @if (is_array($ps->nama_partai_id))
-                                                @foreach ($ps->nama_partai_id as $np)
+                                            @if (is_array($ps->data_partai_id))
+                                                @foreach ($ps->data_partai_id as $np)
                                                     @if ($p->id == $np)
                                                         {{ $p->nama_partai }} <br/>
                                                     @endif
                                                 @endforeach
                                             @else
-                                                @if ($p->id == $ps->nama_partai_id)
+                                                @if ($p->id == $ps->data_partai_id)
                                                     {{ $p->nama_partai }}
                                                 @endif
                                             @endif
@@ -196,14 +196,14 @@
                                 <h1 class="text-center text-gray-800">{{ $ps->nama_pasangan_calon }}</h1>
                                 <div class="flex items-center justify-center space-x-2">
                                     @foreach ($partais as $p)
-                                    @if (is_array($ps->nama_partai_id))
-                                    @foreach ($ps->nama_partai_id as $np)
+                                    @if (is_array($ps->data_partai_id))
+                                    @foreach ($ps->data_partai_id as $np)
                                     @if ($p->id == $np)
                                     <img class="h-8" src="{{ asset('assets/logo-partai/'.$p->logo_partai) }}" alt="">
                                     @endif
                                     @endforeach
                                     @else
-                                    @if ($p->id == $ps->nama_partai_id)
+                                    @if ($p->id == $ps->data_partai_id)
                                     <img class="h-8" src="{{ asset('assets/logo-partai/'.$p->logo_partai) }}" alt="">
                                     @endif
                                     @endif

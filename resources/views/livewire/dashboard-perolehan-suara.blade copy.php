@@ -39,7 +39,7 @@
                                 </div>
                                 {{-- <div class="text-sm  mt-2 text-white">
                                         @foreach ($partais as $p)
-                                            @foreach ($paslonn->nama_partai_id as $np)
+                                            @foreach ($paslonn->data_partai_id as $np)
                                                 @if ($p->id == $np)
                                                     {{ $p->nama_partai }}
                                 @endif
@@ -130,21 +130,21 @@
 </div>
 </div>
 
-@if (is_array($data->nama_partai_id))
-                        @foreach ($data->nama_partai_id as $np)
+@if (is_array($data->data_partai_id))
+                        @foreach ($data->data_partai_id as $np)
                             @if ($p->id == $np)
                                 {{ $data->nama_pasangan_calon }}
                                 {{ $data->kategoriPemilu->nama_kategori_pemilu }}
                                 <br>
                                 {{-- @foreach ($partais as $p) --}}
-                                    @if (is_array($data->nama_partai_id))
-                                        @foreach ($data->nama_partai_id as $np)
+                                    @if (is_array($data->data_partai_id))
+                                        @foreach ($data->data_partai_id as $np)
                                             @if ($p->id == $np)
                                                 {{ $p->nama_partai }} <br/>
                                             @endif
                                         @endforeach
                                     @else
-                                        @if ($p->id == $data->nama_partai_id)
+                                        @if ($p->id == $data->data_partai_id)
                                             {{ $p->nama_partai }}
                                         @endif
                                     @endif

@@ -26,7 +26,7 @@ class DprdKabDashboard extends Component
 
     public $kabKota;
     public $kecamatan;
-    
+
     function mount()
     {
         if($this->kabKotaActive == 0)
@@ -38,7 +38,7 @@ class DprdKabDashboard extends Component
     function updated()
     {
         $this->dataDapilActive = DB::table('data_dapils')->where('cities_id', $this->kabKotaActive)->first();
-        
+
         if($this->kabKotaActive == 0)
         {
             $this->kabKota = IndonesiaCities::all();
@@ -69,7 +69,7 @@ class DprdKabDashboard extends Component
         };
 
         $all = DB::table('pasangan_calons')
-            ->join('data_partais', 'pasangan_calons.nama_partai_id', '=', 'data_partais.id')
+            ->join('data_partais', 'pasangan_calons.data_partai_id', '=', 'data_partais.id')
             ->select('pasangan_calons.*', 'data_partais.nama_partai')
             ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)
             // ->whereNotIn('pasangan_calons.id', $created_po)
@@ -79,7 +79,7 @@ class DprdKabDashboard extends Component
         $setAllItems = collect($users)->merge($all);
         $allItems = collect($setAllItems);
 
-        
+
 
         return view('livewire.dashboard.dprd-kab-dashboard', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'users', 'all', 'allItems'));
     }

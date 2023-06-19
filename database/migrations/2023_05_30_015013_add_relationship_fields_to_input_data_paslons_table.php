@@ -13,8 +13,8 @@ class AddRelationshipFieldsToInputDataPaslonsTable extends Migration
             $table->foreign('kategori_pemilu_id')->references('id')->on('kategori_pemilus');
             $table->unsignedBigInteger('data_dapil_id')->nullable();
             $table->foreign('data_dapil_id')->references('id')->on('data_dapils');
-            // $table->unsignedBigInteger('nama_partai_id')->nullable();
-            // $table->foreign('nama_partai_id', 'nama_partai_fk_8515261')->references('id')->on('data_partais');
+            // $table->unsignedBigInteger('data_partai_id')->nullable();
+            // $table->foreign('data_partai_id', 'nama_partai_fk_8515261')->references('id')->on('data_partais');
         });
     }
 }

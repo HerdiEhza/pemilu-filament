@@ -40,18 +40,18 @@ class DashboardPerolehanSuara extends Component
         // return view('livewire.dashboard-perolehan-suara', compact('paslon', 'partais', 'kategoriPemilus', 'dapils', 'result'));
 
         // $latestPosts = DB::table('pasangan_calons')
-        //     // ->join('pasangan_calons', 'data_partais.id', '=', 'pasangan_calons.nama_partai_id')
-        //     ->join('tps_results', 'pasangan_calons.nama_partai_id', '=', 'tps_results.data_partai_id')
+        //     // ->join('pasangan_calons', 'data_partais.id', '=', 'pasangan_calons.data_partai_id')
+        //     ->join('tps_results', 'pasangan_calons.data_partai_id', '=', 'tps_results.data_partai_id')
         //     ->select('pasangan_calons.*', 'tps_results.perolehan_suara', 'tps_results.data_partai_id', 'tps_results.is_active', DB::raw('SUM(tps_results.perolehan_suara) as total_suara'))
         //     ->where('pasangan_calons.kategori_pemilu_id', $this->kategoriPemiluActive)->where('pasangan_calons.data_dapil_id', $this->dataDapilActive)->where('tps_results.is_active', true)
-        //     ->groupBy('nama_partai_id');
+        //     ->groupBy('data_partai_id');
         //     // ->withSum('perolehanSuara as total_suara', 'tps_results.perolehan_suara')
         //     // ->havingRaw('SUM(tps_results.perolehan_suara)')
         //     // ->get();
 
         // $users = DB::table('data_partais')
         // ->joinSub($latestPosts, 'latest_posts', function (JoinClause $join) {
-        //     $join->on('data_partais.id', '=', 'latest_posts.nama_partai_id');
+        //     $join->on('data_partais.id', '=', 'latest_posts.data_partai_id');
         // })->get();
 
 // $sortByVotes = $request->boolean('sort_by_votes');
@@ -79,7 +79,7 @@ class DashboardPerolehanSuara extends Component
         }
 
         $all = DB::table('pasangan_calons')
-            ->join('data_partais', 'pasangan_calons.nama_partai_id', '=', 'data_partais.id')
+            ->join('data_partais', 'pasangan_calons.data_partai_id', '=', 'data_partais.id')
             ->select('pasangan_calons.*', 'data_partais.nama_partai')
             ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)
             ->whereNotIn('pasangan_calons.id', $created_po)

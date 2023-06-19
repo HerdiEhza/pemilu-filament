@@ -71,7 +71,7 @@
                         </thead>
                         <tbody>
                             @foreach ($allItems as $data)
-                                @if ($p->id == $data->nama_partai_id)
+                                @if ($p->id == $data->data_partai_id)
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td class="px-6 py-4">
                                             {{ $data->nama_pasangan_calon }}
@@ -96,12 +96,12 @@
                     </table>
 
                 {{--  @foreach ($allItems as $test)
-                    @if ($p->id == $test->nama_partai_id)
-                            
+                    @if ($p->id == $test->data_partai_id)
+
                     @endif
                     @endforeach --}}
                 @empty
-                    
+
                 @endforelse
 
                 {{-- @foreach ($allItems as $user)
@@ -110,7 +110,7 @@
                         <p>{{ $user->total_suara ?? 0 }}</p>
                     </div>
                 @endforeach --}}
-                
+
             </div>
 
         </div>

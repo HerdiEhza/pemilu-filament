@@ -34,14 +34,14 @@
                             <div class="top-0 flex flex-col p-2">
                                 <h1 class="text-center text-gray-800">{{ $resultMount->nama_pasangan_calon }}</h1>
                                 {{-- @foreach ($partais as $p)
-                                    @if (is_array($resultMount->nama_partai_id))
-                                        @foreach ($resultMount->nama_partai_id as $np)
+                                    @if (is_array($resultMount->data_partai_id))
+                                        @foreach ($resultMount->data_partai_id as $np)
                                             @if ($p->id == $np)
                                                 <p class="text-xs font-light text-center text-gray-400">{{ $p->nama_partai }}</p>
                                             @endif
                                         @endforeach
                                     @else
-                                        @if ($p->id == $resultMount->nama_partai_id)
+                                        @if ($p->id == $resultMount->data_partai_id)
                                             <p class="text-xs font-light text-center text-gray-400">{{ $p->nama_partai }}</p>
                                         @endif
                                     @endif

@@ -17,17 +17,17 @@ class PasanganCalon extends Model
     protected $fillable = [
         'nama_pasangan_calon',
         'kategori_pemilu_id',
-        'nama_partai_id',
+        'data_partai_id',
         'data_dapil_id',
     ];
 
-    protected $casts = [
-        'nama_partai_id' => 'array',
-    ];
+    // protected $casts = [
+    //     'data_partai_id' => 'array',
+    // ];
 
-    public function partais() : BelongsToMany
+    public function partais() : BelongsTo
     {
-        return $this->belongsToMany(DataPartai::class);
+        return $this->belongsTo(DataPartai::class);
     }
 
     public function dapil() : BelongsTo

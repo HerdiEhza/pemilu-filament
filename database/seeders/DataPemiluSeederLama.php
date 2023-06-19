@@ -465,25 +465,25 @@ class DataPemiluSeederLama extends Seeder
             [
                 'id' => 1,
                 'nama_pasangan_calon' => 'Jokowi',
-                'nama_partai_id' => 1,
+                'data_partai_id' => 1,
                 'kategori_pemilu_id' => 1,
             ],
             [
                 'id' => 2,
                 'nama_pasangan_calon' => 'Prabowo',
-                'nama_partai_id' => 1,
+                'data_partai_id' => 1,
                 'kategori_pemilu_id' => 1,
             ],
             [
                 'id' => 3,
                 'nama_pasangan_calon' => 'Ganjar',
-                'nama_partai_id' => 1,
+                'data_partai_id' => 1,
                 'kategori_pemilu_id' => 1,
             ],
             [
                 'id' => 4,
                 'nama_pasangan_calon' => 'Anis',
-                'nama_partai_id' => 1,
+                'data_partai_id' => 1,
                 'kategori_pemilu_id' => 1,
             ],
         ];

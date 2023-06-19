@@ -66,7 +66,7 @@
                             <h1 class="text-center text-gray-800">{{ $pasangan->nama_pasangan_calon }}</h1>
                             <p class="text-xs font-light text-center text-gray-400">{{ $pasangan->kategoriPemilu->nama_kategori_pemilu }}</p>
                             @foreach ($fetchPartai as $p)
-                                @foreach ($pasangan->nama_partai_id as $np)
+                                @foreach ($pasangan->data_partai_id as $np)
                                     @if ($p->id == $np)
                                         {{ $p->nama_partai }}
                                     @endif

@@ -12,12 +12,19 @@
                 </li>
             </ul>
 
+            <div class="flex justify-end p-4">
+                <a href="{{ route('dashboard') }}" class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">
+                    Kembali
+                </a>
+            </div>
+
             <div class="relative p-4 overflow-x-auto shadow-md sm:rounded-lg">
                 <div class="py-4 text-center">
                     <h2 class="font-semibold">HASIL HITUNG SUARA PEMILU LEGISLATIF DPRD KAB/KOTA 2024</h2>
                     <p>WILAYAH PEMILIHAN KOTA PONTIANAK - PROV. KALIMANTAN BARAT</p>
                     <p>DAPIL ...</p>
                 </div>
+
                 <div class="grid grid-cols-3 gap-4">
                     @forelse ($partais as $partai)
 
@@ -35,7 +42,7 @@
                         </div>
                         <ul role="list" class="divide-y divide-gray-100">
                             @forelse ($paslons as $paslon)
-                                @if ($partai->id == $paslon->nama_partai_id)
+                                @if ($partai->id == $paslon->data_partai_id)
                                 <li class="flex justify-between py-2 gap-x-6">
                                     <div class="flex gap-x-2">
                                         <p class="text-sm leading-6 text-gray-900 first-letter:font-semibold">{{ $paslon->nomor_urut }}</p>

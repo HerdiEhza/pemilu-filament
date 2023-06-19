@@ -34,7 +34,7 @@ class PasanganCalonResource extends Resource
                     ->label('Kategori PEMILU')
                     ->options(KategoriPemilu::all()->pluck('nama_kategori_pemilu', 'id'))
                     ->searchable(),
-                Select::make('nama_partai_id')
+                Select::make('data_partai_id')
                     ->label('Partai Pengusung')
                     ->multiple()
                     ->options(DataPartai::all()->pluck('nama_partai', 'id'))
@@ -62,14 +62,14 @@ class PasanganCalonResource extends Resource
                 Tables\Actions\RestoreBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -79,8 +79,8 @@ class PasanganCalonResource extends Resource
             'edit' => Pages\EditPasanganCalon::route('/{record}/edit'),
             // 'test' => PasanganCalonResource::getPages()
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

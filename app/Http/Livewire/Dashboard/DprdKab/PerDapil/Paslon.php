@@ -45,17 +45,17 @@ class Paslon extends Component
 
         $this->suaras = $collection->sortByDesc('total_suara');
         $this->suaras = $this->suaras->values()->all();
-        
+
         $this->paslonActive = $collection->where('pasangan_calon_id', $this->dapilPaslonActive);
         $this->paslonActive = $this->paslonActive->all();
         $this->paslonActive = array_values($this->paslonActive);
-        
+
         $this->totalSuaraPartai = $collection->where('data_partai_id', $this->dapilPartaiActive);
         $this->totalSuaraPartai = $this->totalSuaraPartai->sum('total_suara');
 
         $this->persentaseTerhadapSuaraPartai = ($this->paslonActive[0]->total_suara / $this->totalSuaraPartai) * 100;
         $this->persentaseTerhadapSuaraPartai = round($this->persentaseTerhadapSuaraPartai, 2);
-        
+
         $getTotalSuaraDapil = $collection->where('data_dapil_id', $this->dataDapilActive);
         $getTotalSuaraDapil = $getTotalSuaraDapil->sum('total_suara');
         $this->persentaseTerhadapSuaraDapil = ($this->totalSuaraPartai / $getTotalSuaraDapil) * 100;
@@ -66,8 +66,14 @@ class Paslon extends Component
     public function render()
     {
         $partais = DataPartai::all();
-        $paslons = PasanganCalon::where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)->where('nama_partai_id', $this->dapilPartaiActive)->get();
-        $bakalCalon = PasanganCalon::where('id', $this->dapilPaslonActive)->where('data_dapil_id', $this->dataDapilActive)->where('nama_partai_id', $this->dapilPartaiActive)->first();
+        $paslons = PasanganCalon::where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)->where('data_partai_id', $this->dapilPartaiActive)->get();
+        // $bakalCalon = PasanganCalon::where('id', $this->dapilPaslonActive)->where('data_dapil_id', $this->dataDapilActive)->where('data_partai_id', $this->dapilPartaiActive)->first();
+        $bakalCalon = DB::table('pasangan_calons')
+            ->where('id', $this->dapilPaslonActive)
+            ->where('data_partai_id', $this->dapilPartaiActive)
+            ->where('data_dapil_id', $this->dataDapilActive)
+            ->first();
+        // dd($bakalCalon);
         $dapilPemilihan = DataDapil::where('id', $this->dataDapilActive)->first();
 
         return view('livewire.dashboard.dprd-kab.per-dapil.paslon', compact(

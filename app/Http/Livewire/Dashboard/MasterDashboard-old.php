@@ -99,7 +99,7 @@ class MasterDashboard extends Component
             // ->groupByRaw('tps_id', data_partai_id, tps_provinsi_id, tps_kab_id, tps_kec_id, tps_kel_id')
             ->get();
 
-            
+
 
         // $getTps = DB::table('data_tps')->select('id', 'provinsi_id', 'kabupaten_kota_id', 'kecamatan_id', 'kelurahan_desa_id')->get();
 
@@ -111,7 +111,7 @@ class MasterDashboard extends Component
         // $orders -$orders->mapToGroups(function (array $item, int $key) {
         //     return [$item['department'] => $item['name']];
         // });
-        
+
 
         // $orders = collect($orders)->merge($getTps);
         // $orders->collapse();
@@ -144,7 +144,7 @@ class MasterDashboard extends Component
         // }
 
         $all = DB::table('pasangan_calons')
-            ->join('data_partais', 'pasangan_calons.nama_partai_id', '=', 'data_partais.id')
+            ->join('data_partais', 'pasangan_calons.data_partai_id', '=', 'data_partais.id')
             ->select('pasangan_calons.*', 'data_partais.nama_partai')
             ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('data_dapil_id', $this->dataDapilActive)
             // ->whereNotIn('pasangan_calons.id', $created_po)
