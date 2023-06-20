@@ -103,7 +103,7 @@ class TpsInput extends Component
                 'data_dapil_id', $this->data_dapil_id
             )->get();
 
-            dd($this->paslons);
+            // dd($this->paslons);
 
     }
 
