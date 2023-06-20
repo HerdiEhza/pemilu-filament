@@ -18,7 +18,7 @@
             </ul>
 
             <div class="flex justify-end p-4">
-                <a href="{{ url()->previous() }}" class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">
+                <a href="{{ url()->previous() }}" class="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">
                     Kembali
                 </a>
             </div>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="grid w-full grid-cols-1 gap-4 pt-6 xl:grid-cols-2 2xl:grid-cols-2">
+                    <div class="grid w-full grid-cols-1 gap-4 pt-6 xl:grid-cols-1 2xl:grid-cols-1">
                         {{-- <div class="p-4 bg-white rounded-lg shadow sm:p-6 xl:p-8 2xl:col-span-2">
                           <div class="flex items-center justify-between mb-4">
                              <div class="flex-shrink-0">
@@ -108,7 +108,7 @@
                                                   Last update
                                                </th> --}}
                                                         <th scope="col"
-                                                            class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                            class="p-4 text-xs font-medium tracking-wider text-left text-center text-gray-500 uppercase">
                                                             Total suara
                                                         </th>
                                                     </tr>
@@ -130,7 +130,7 @@
                                                             Apr 23 ,2021
                                                         </td> --}}
                                                         <td
-                                                            class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
+                                                            class="p-4 text-sm font-semibold text-center text-gray-900 whitespace-nowrap">
                                                             {{ number_format($suara->total_suara ?? 0) }}
                                                         </td>
                                                     </tr>

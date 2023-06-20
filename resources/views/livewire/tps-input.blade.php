@@ -251,7 +251,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($paslons as $ps)
-                                        @if ($ps->data_partai_id == $p->id)
+                                            @if ($p->id == $ps->data_partai_id)
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                 <td class="px-6 py-4">
                                                     {{ $ps->nama_pasangan_calon }}
@@ -269,7 +269,7 @@
                                                         class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6">
                                                 </th>
                                             </tr>
-                                        @endif
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -318,11 +318,94 @@
                                             Submit!
                                         </div>
                                     </button>
+                                    
+                                    {{-- <button
+                                        wire:loading.attr="disabled"
+                                        wire:loading.class="!cursor-wait"
+                                        type="button"
+                                        class="inline-flex items-center justify-center px-4 py-2 text-sm text-white transition-all duration-150 ease-in rounded outline-none group focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed gap-x-2 ring-info-500 bg-info-500 hover:bg-info-600 hover:ring-info-600 dark:ring-offset-slate-800 dark:bg-info-700 dark:ring-info-700 dark:hover:bg-info-600 dark:hover:ring-info-600"
+                                        wire:click="dialog()"
+                                    >
+                                        Info Dialog
+                                    </button> --}}
+
                                 </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
+
             </div>
         </div>
+    </div>
+</div>
+
+<x-dialog id="custom" title="User information" description="Complete your profile, give your name">
+    <x-input label="What's your name?" placeholder="your name bro" x-model="name" />
+</x-dialog>
+
+{{-- <x-modal.card title="Edit Customer" blur wire:model.defer="cardModal">
+    <form wire:submit.prevent="save">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    Jumlah Suara Sah
+                </label>
+                <input
+                    type="text"
+                    name="jumlah_suara_sah"
+                    id="jumlah_suara_sah"
+                    class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                >
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+                    Jumlah Suara Tidak Sah
+                </label>
+                <input
+                    type="text"
+                    name="jumlah_suara_tidak_sah"
+                    id="jumlah_suara_tidak_sah"
+                    class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                >
+            </div>
+
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+                Foto Form C1
+            </label>
+            @if ($this->photo)
+                Photo Preview:
+                <img src="{{ $this->photo->temporaryUrl() }}">
+            @endif
+            <input type="file" wire:model="photo">
+            @error('photo') <span class="error">{{ $message }}</span> @enderror
+            {{-- <div class="flex items-center justify-center col-span-1 bg-gray-100 shadow-md cursor-pointer sm:col-span-2 rounded-xl h-72">
+                <div class="flex flex-col items-center justify-center">
+                    <x-icon name="cloud-upload" class="w-16 h-16 text-blue-600" />
+                    <p class="text-blue-600">Click or drop files here</p>
+                </div>
+            </div>
+        </div>
+
+        <x-slot name="footer">
+            <div class="flex justify-end gap-x-4">
+                <div class="flex">
+                    <x-button flat label="Cancel" x-on:click="close" />
+                    <button wire:click.prevent="submitForm" wire:loading.attr="disabled"
+                        wire:loading.class="cursor-progress"
+                        class="@empty($ps) hidden @endempty flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        type="submit">
+                        <div wire:loading wire:target="submitForm">
+                            Loading...
+                        </div>
+                        <div wire:loading.remove wire:target="submitForm">
+                            Submit!
+                        </div>
+                    </button>
+                    <x-button primary label="Save" wire:click="save" />
+                </div>
+            </div>
+        </x-slot>
+    </form>
+</x-modal.card> --}}

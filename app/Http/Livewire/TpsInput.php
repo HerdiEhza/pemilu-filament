@@ -14,15 +14,21 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Validator;
 
 use Filament\Notifications\Notification;
+use Livewire\WithFileUploads;
+use WireUi\Traits\Actions;
 
 class TpsInput extends Component
 {
+    use WithFileUploads, Actions;
+
+    // public $currentStep = 3;
     public $currentStep = 1;
 
     public $paslons;
     public $kategori_pemilu_id;
     public $data_dapil_id;
     public $result = [];
+    public $photo;
 
     // protected $rules = [
     //     'kategori_pemilu_id' => 'required|email',
@@ -31,6 +37,32 @@ class TpsInput extends Component
     // protected $messages = [
     //     'kategori_pemilu_id.required' => 'Harap pilih Kategori PEMILU terlebih dahulu.',
     // ];
+
+    public function dialog()
+    {
+        $this->dialog()->confirm([
+            'title'       => __('bap.are_you_sure'),
+            'description' => 'Delete this user?',
+            'icon'        => 'question',
+            'accept'      => [
+                'label'  => 'Yes, delete it',
+                'method' => 'submitForm',
+                'color' => 'negative',
+            ],
+            'reject' => [
+                'label'  => __('bap.cancel'),
+                'method' => 'cancelledDelete',
+            ],
+        ]);
+    }
+
+    public function cancelledDelete()
+    {
+        $this->notification([
+            'title'       => 'User not deleted!',
+            'icon'        => 'warning'
+        ]);
+    }
 
     public function firstStepSubmit()
     {
@@ -59,16 +91,30 @@ class TpsInput extends Component
     public function mount()
     {
         $this->data_dapil_id = Auth::user()->data_dapil_id;
+        // $this->paslons = DB::table('pasangan_calons')->select('id','nama_pasangan_calon','data_partai_id','kategori_pemilu_id', 'data_dapil_id')->where(
+        //         'kategori_pemilu_id', $this->kategori_pemilu_id
+        //     )->where(
+        //         'data_dapil_id', $this->data_dapil_id
+        //     )->get();
+
         $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','data_partai_id','kategori_pemilu_id', 'data_dapil_id')->where(
-            'kategori_pemilu_id', $this->kategori_pemilu_id
+                'kategori_pemilu_id', $this->kategori_pemilu_id
             )->where(
                 'data_dapil_id', $this->data_dapil_id
             )->get();
+
+            dd($this->paslons);
+
     }
 
     public function updated()
     {
         $this->data_dapil_id = Auth::user()->data_dapil_id;
+        // $this->paslons = DB::table('pasangan_calons')->select('id','nama_pasangan_calon','data_partai_id','kategori_pemilu_id', 'data_dapil_id')->where(
+        //         'kategori_pemilu_id', $this->kategori_pemilu_id
+        //     )->where(
+        //         'data_dapil_id', $this->data_dapil_id
+        //     )->get();
         $this->paslons =  PasanganCalon::select('id','nama_pasangan_calon','data_partai_id','kategori_pemilu_id', 'data_dapil_id')->where(
             'kategori_pemilu_id', $this->kategori_pemilu_id
             )->where(
@@ -78,7 +124,12 @@ class TpsInput extends Component
 
     public function submitForm()
     {
-        $paslonData = PasanganCalon::select('id','nama_pasangan_calon', 'data_partai_id', 'data_dapil_id')->get();
+        // $this->validate([
+        //     'photo' => 'image|max:1024',
+        // ]);
+
+        // $paslonData = PasanganCalon::select('id','nama_pasangan_calon', 'data_partai_id', 'data_dapil_id')->get();
+        $paslonData = DB::table('pasangan_calons')->select('id','nama_pasangan_calon', 'data_partai_id', 'data_dapil_id')->get();
         $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $this->kategori_pemilu_id)->first();
 
         $master = ModelsTpsInput::create([
