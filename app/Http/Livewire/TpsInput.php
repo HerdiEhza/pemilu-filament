@@ -8,6 +8,7 @@ use App\Models\KategoriPemilu;
 use App\Models\PasanganCalon;
 use App\Models\TpsInput as ModelsTpsInput;
 use App\Models\TpsResult;
+use App\Models\TpsResultPartai;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,7 @@ class TpsInput extends Component
     public $kategori_pemilu_id;
     public $data_dapil_id;
     public $result = [];
+    public $resultPartai = [];
     public $photo;
 
     // protected $rules = [
@@ -129,6 +131,7 @@ class TpsInput extends Component
         // ]);
 
         // $paslonData = PasanganCalon::select('id','nama_pasangan_calon', 'data_partai_id', 'data_dapil_id')->get();
+        $partaiData = DB::table('data_partais')->select('id','nama_partai')->get();
         $paslonData = DB::table('pasangan_calons')->select('id','nama_pasangan_calon', 'data_partai_id', 'data_dapil_id')->get();
         $namaKategoriPemilu = KategoriPemilu::select('id','nama_kategori_pemilu')->where('id', $this->kategori_pemilu_id)->first();
 
@@ -138,6 +141,26 @@ class TpsInput extends Component
             'kategori_pemilu_id' => $this->kategori_pemilu_id,
             'data_dapil_id' => $this->data_dapil_id,
         ]);
+
+        foreach ($this->resultPartai as $index => $resultP) {
+            foreach ($partaiData as $partai) {
+                if ($index == $partai->id) {
+                    TpsResultPartai::create([
+                        'tps_id' => Auth::user()->tps_id,
+                        'tps_provinsi_id' => Auth::user()->tps->provinsi_id,
+                        'tps_kab_id' => Auth::user()->tps->kabupaten_kota_id,
+                        'tps_kec_id' => Auth::user()->tps->kecamatan_id,
+                        'tps_kel_id' => Auth::user()->tps->kelurahan_desa_id,
+                        'kategori_pemilu_id' => $this->kategori_pemilu_id,
+                        'nama_partai' => $partai->nama_partai,
+                        'data_partai_id' => $partai->id,
+                        'perolehan_suara' => $resultP['perolehan_suara'] ?? '0',
+                        'tps_input_id' => $master->id,
+                        'is_active	' => true
+                    ]);
+                }
+            }
+        }
 
         foreach ($this->result as $index => $result) {
             foreach ($paslonData as $paslon) {
@@ -153,7 +176,7 @@ class TpsInput extends Component
                         'data_dapil_id' => $paslon->data_dapil_id,
                         'nama_pasangan_calon' => $paslon->nama_pasangan_calon,
                         'data_partai_id' => $paslon->data_partai_id,
-                        'perolehan_suara' => $result['perolehan_suara'] ?? '0',
+                        'perolehan_suara' => $result['perolehan_suara'],
                         'tps_input_id' => $master->id,
                         'is_active	' => true
                     ]);

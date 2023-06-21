@@ -3,17 +3,28 @@
         <div class="justify-center overflow-hidden bg-white shadow-sm sm:rounded-lg">
 
             {{-- {{ dd($suaras) }} --}}
-            <ul class="flex justify-around py-4 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+            <ul class="flex justify-around pt-4 space-x-1 text-sm font-medium text-center text-gray-500 border-b-4 border-gray-600 dark:border-gray-700 dark:text-gray-400">
                 <li class="w-full">
-                    <a href="{{ route('dashboard') }}" aria-current="page" class="flex w-full p-4 text-white bg-blue-400 rounded-t-lg hover:bg-blue-500 active dark:bg-gray-800 dark:text-blue-500">Per DAPIL</a>
+                    <a href="{{ route('dashboard') }}" aria-current="page" class="flex w-full p-4 text-white bg-blue-400 rounded-t-lg hover:bg-blue-500 active dark:bg-gray-800 dark:text-blue-500">DPR RI</a>
                 </li>
                 <li class="w-full">
-                    <a href="{{ route('dashboard.per-wilayah') }}" class="flex w-full p-4 bg-gray-100 rounded-t-lg hover:text-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300">Per Wilayah</a>
+                    <a href="{{ route('dashboard.per-wilayah') }}" class="flex w-full p-4 bg-gray-100 rounded-t-lg hover:text-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300">DPRD Provinsi</a>
+                </li>
+                <li class="w-full">
+                    <a href="{{ route('dashboard.per-wilayah') }}" class="flex w-full p-4 bg-gray-100 rounded-t-lg hover:text-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300">DPRD Kabupaten / Kota</a>
+                </li>
+            </ul>
+            <ul class="flex justify-around pb-4 space-x-1 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                <li class="w-full">
+                    <a href="{{ route('dashboard') }}" aria-current="page" class="flex w-full p-4 text-white bg-blue-400 rounded-b-lg hover:bg-blue-500 active dark:bg-gray-800 dark:text-blue-500">Per DAPIL</a>
+                </li>
+                <li class="w-full">
+                    <a href="{{ route('dashboard.per-wilayah') }}" class="flex w-full p-4 bg-gray-100 rounded-b-lg hover:text-gray-600 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300">Per Wilayah</a>
                 </li>
             </ul>
 
             <div class="flex justify-end p-4">
-                <a href="{{ route('dashboard') }}" class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">
+                <a href="{{ route('dashboard') }}" class="flex items-center justify-center w-full h-12 px-6 font-semibold text-white rounded-lg bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">
                     Kembali
                 </a>
             </div>
@@ -41,8 +52,20 @@
                             </div>
                         </div>
                         <ul role="list" class="divide-y divide-gray-100">
+                            <li class="flex justify-between py-2 border-y-2 gap-x-6">
+                                <div class="flex gap-x-2">
+                                    <p class="text-sm font-semibold leading-6 text-gray-900 text-start">Perolehan Suara Partai</p>
+                                </div>
+                                <div class="hidden sm:flex sm:flex-col sm:items-end">
+                                    @foreach ($suaraPartais as $suaraP)
+                                        @if ($partai->id == $suaraP->data_partai_id)
+                                        <p class="text-sm leading-6 text-gray-900">{{ $suaraP->total_suara_partai ?? '0'}}</p>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
                             @forelse ($paslons as $paslon)
-                                @if ($partai->id == $paslon->data_partai_id)
+                            @if ($partai->id == $paslon->data_partai_id)
                                 <li class="flex justify-between py-2 gap-x-6">
                                     <div class="flex gap-x-2">
                                         <p class="text-sm leading-6 text-gray-900 first-letter:font-semibold">{{ $paslon->nomor_urut }}</p>
@@ -51,7 +74,7 @@
                                     <div class="hidden sm:flex sm:flex-col sm:items-end">
                                         @foreach ($suaras as $suara)
                                             @if ($paslon->id == $suara->pasangan_calon_id)
-                                            <p class="text-sm leading-6 text-gray-900">{{ $suara->total_suara }}</p>
+                                            <p class="text-sm leading-6 text-gray-900">{{ $suara->total_suara ?? '0'}}</p>
                                             @endif
                                         @endforeach
                                     </div>

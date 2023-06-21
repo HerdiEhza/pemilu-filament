@@ -36,8 +36,8 @@ class DatabaseSeeder extends Seeder
             PaslonDprdProvinsiSeeder::class,
             PaslonDprdKabKotaSeeder::class,
             UserTps::class,
-            DataTpsInputsSeeder::class,
-            DataTpsResultsSeeder::class,
+            // DataTpsInputsSeeder::class,
+            // DataTpsResultsSeeder::class,
         ]);
 
         \App\Models\User::create([

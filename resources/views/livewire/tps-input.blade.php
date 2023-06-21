@@ -237,6 +237,15 @@
                                                 {{ $p->nama_partai }}
                                             </th>
                                         </tr>
+                                        <tr>
+                                            <th colspan="2" class="px-6 py-3 text-center">
+                                                <input wire:model.lazy="resultPartai.{{ $p->id }}.perolehan_suara"
+                                                    placeholder="Suara Partai"
+                                                    type="number" name="perolehan_suara" id="perolehan_suara"
+                                                    class="bottom-0 text-center block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                                                >
+                                            </th>
+                                        </tr>
                                     </thead>
                                     <thead
                                         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -318,7 +327,7 @@
                                             Submit!
                                         </div>
                                     </button>
-                                    
+
                                     {{-- <button
                                         wire:loading.attr="disabled"
                                         wire:loading.class="!cursor-wait"

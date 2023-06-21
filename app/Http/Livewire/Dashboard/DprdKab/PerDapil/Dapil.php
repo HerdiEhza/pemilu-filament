@@ -20,6 +20,7 @@ class Dapil extends Component
     public $dataDapilActive;
 
     public $suaras;
+    public $suaraPartais;
 
     function mount(Request $request)
     {
@@ -33,6 +34,14 @@ class Dapil extends Component
             ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
             ->groupByRaw('pasangan_calon_id, data_partai_id')
             ->get();
+
+        $this->suaraPartais = DB::table('tps_result_partais')
+            ->select('nama_partai', 'data_partai_id', DB::raw('SUM(perolehan_suara) as total_suara_partai'))
+            ->where('kategori_pemilu_id', $this->kategoriPemiluActive)->where('is_active', true)
+            ->groupByRaw('nama_partai, data_partai_id')
+            ->get();
+
+        // dd($this->suaraPartais);
     }
 
     public function render()

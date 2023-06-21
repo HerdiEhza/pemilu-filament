@@ -131,7 +131,7 @@
                                                         </td> --}}
                                                         <td
                                                             class="p-4 text-sm font-semibold text-center text-gray-900 whitespace-nowrap">
-                                                            {{ number_format($suara->total_suara ?? 0) }}
+                                                            {{ number_format($suara->total_suara ?? '0') }}
                                                         </td>
                                                     </tr>
                                                     @endif
